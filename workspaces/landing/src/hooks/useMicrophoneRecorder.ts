@@ -2,6 +2,8 @@
 import { useRef, useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
+const { VITE_API_URL } = import.meta.env;
+
 export interface TranscriptionResult {
   text: string;
   timestamp: string;
@@ -15,7 +17,7 @@ export const useMicrophoneRecorder = () => {
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [transcriptions, setTranscriptions] = useState<TranscriptionResult[]>([]);
-  
+
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -47,7 +49,7 @@ export const useMicrophoneRecorder = () => {
         const hasMicrophonePermission = devices.some(
           device => device.kind === 'audioinput' && device.label !== ''
         );
-        
+
         if (hasMicrophonePermission) {
           const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
           setMicPermission(true);
@@ -58,7 +60,7 @@ export const useMicrophoneRecorder = () => {
         console.log('Microphone permission not yet granted');
       }
     };
-    
+
     checkMicPermission();
   }, []);
 
@@ -82,23 +84,23 @@ export const useMicrophoneRecorder = () => {
   // Set up the media recorder with the stream
   const setupMediaRecorder = (stream: MediaStream) => {
     const mediaRecorder = new MediaRecorder(stream);
-    
+
     mediaRecorder.onstart = () => {
       audioChunksRef.current = [];
     };
-    
+
     mediaRecorder.ondataavailable = (event) => {
       if (event.data.size > 0) {
         audioChunksRef.current.push(event.data);
       }
     };
-    
+
     mediaRecorder.onstop = () => {
       const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
       setAudioBlob(audioBlob);
       sendAudioToAPI(audioBlob);
     };
-    
+
     mediaRecorderRef.current = mediaRecorder;
   };
 
@@ -151,24 +153,16 @@ export const useMicrophoneRecorder = () => {
     try {
       const formData = new FormData();
       formData.append('file', audioBlob, 'recording.wav');
-      formData.append('model', 'base');
-      formData.append('language', 'en');
-      formData.append('initial_prompt', 'string');
-      formData.append('vad_filter', 'false');
-      formData.append('min_silence_duration_ms', '1000');
-      formData.append('response_format', 'text');
-      formData.append('timestamp_granularities', 'segment');
-      
       // Add conversation history to the request
       formData.append('history', JSON.stringify(formatHistoryForAPI()));
 
       const response = await fetch(
-        'https://e90d-2a12-26c0-2105-1f00-84db-fc8b-f-9a95.ngrok-free.app/v1/transcriptions',
+        `${VITE_API_URL}/transcriptions`,
         {
           method: 'POST',
           headers: {
             'accept': 'application/json',
-            'Authorization': 'Bearer dummy_api_key',
+            // 'Authorization': 'Bearer dummy_api_key',
           },
           body: formData,
         }
@@ -179,7 +173,7 @@ export const useMicrophoneRecorder = () => {
       }
 
       const result = await response.json();
-      
+
       // Only add the transcription if there's actual text content
       if (result.text && result.text.trim() !== '') {
         // Add new transcription to the list
@@ -187,7 +181,7 @@ export const useMicrophoneRecorder = () => {
           text: result.text,
           timestamp: new Date().toISOString(),
         };
-        
+
         setTranscriptions(prev => [newTranscription, ...prev]);
         toast({
           title: "Transcription Complete",

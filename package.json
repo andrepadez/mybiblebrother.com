@@ -2,6 +2,17 @@
   "name": "mybiblebrother",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev:auth": "cd servers/auth-server && bun run dev",
+    "start:auth": "cd servers/auth-server && bun run start",
+    "build:auth": "cd servers/auth-server && bun run build",
+    "dev:api": "cd servers/api-server && bun run dev",
+    "start:api": "cd servers/api-server && bun run start",
+    "build:api": "cd servers/api-server && bun run build",
+    "dev:landing": "cd workspaces/landing && bun run dev",
+    "start:landing": "cd workspaces/landing && bun run start",
+    "build:landing": "cd workspaces/landing && bun run build"
+  },
   "workspaces": [
     "databases/*",
     "packages/*",
@@ -14,5 +25,9 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "node-fetch": "^3.3.2"
   }
 }

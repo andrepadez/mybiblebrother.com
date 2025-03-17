@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Build",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
+
+    "allowJs": true,
+    "outDir": "${configDir}/dist",
+    "rootDir": "${configDir}/src",
+    "noEmit": false,
+
+    "moduleResolution": "bundler",
+
+    "skipLibCheck": true
+  },
+  "include": ["${configDir}/src/index.ts"]
+}

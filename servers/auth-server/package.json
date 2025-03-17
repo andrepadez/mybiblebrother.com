@@ -1,0 +1,13 @@
+{
+  "name": "authentication-server",
+  "module": "src/index.ts",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "bun --env-file=../../.env --watch src/index.ts",
+    "start": "bun --env-file=../../.env src/index.ts",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "hono-server": "workspace:*"
+  }
+}
