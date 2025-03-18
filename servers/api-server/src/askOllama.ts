@@ -1,31 +1,6 @@
 import ollama from 'ollama';
 import type { Message } from 'ollama';
 
-
-export const chatWithOllama2 = async (transcription: string, messages: Message[]) => {
-  const messagesForOllama = [
-    { role: 'system', content: systemPrompt },
-    ...messages,
-    { role: 'user', content: transcription }
-  ];
-
-  try {
-    const response = await ollama.chat({
-      model: 'gemma3:4b',
-      messages: messagesForOllama,
-      stream: false,
-    });
-
-    console.log('Response:', response.message.content);
-
-    return { text: response.message.content };
-  } catch (error) {
-    console.error('Error:', error);
-    return { text: 'Error occurred', correctedQuestion: null };
-  }
-}
-
-
 const names: any = {
   am: 'Joel',
   af: 'Sarah',
@@ -99,16 +74,21 @@ please try to maintain a conversational tone in your responses and craft your an
 short paragraph form, like a chat, unless the user asks for a deteiled explanation of something in which 
 case you should limit it to 2 or 3 short paragraphs, maximum of 50 words per paragraph.
 ending with cited Bible verses (e.g., Psalm 23:1-3).
-IMPORTANT: Since user inputs are transcribed from voice, expect potential typos or 
+Since user inputs are transcribed from voice, expect potential typos or 
 inconsistencies (e.g., 'byble' for 'Bible'); Interpret these with flexibility and include a 
 corrected version of the user's question in your response. 
-IMPORTANT: Please start with a disrtinct paragraph that includes the corrected question, always, even if 
+Please start with a disrtinct paragraph that includes the corrected question, always, even if 
 the corrected question is the same as the original question.
-
-Expected response format:"
-|CORRECTED PROMPT: <corrected question>|
-<response>
-|BIBLE VERSES: <cited verses>|
+IMPORTANT: ALWAYS use the following response format, if not my app will break:
+"<corrected prompt>"
+"------------------------- "
+"<response> "
+"------------------------- "
+<book>:<chapter>:<verse> - <quote>
+----- 
+<book>:<chapter>:<verse> - <quote>
+----- 
+<book>:<chapter>:<verse> - <quote>
 "
 `;
 
