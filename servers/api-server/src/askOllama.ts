@@ -79,16 +79,20 @@ inconsistencies (e.g., 'byble' for 'Bible'); Interpret these with flexibility an
 corrected version of the user's question in your response. 
 Please start with a disrtinct paragraph that includes the corrected question, always, even if 
 the corrected question is the same as the original question.
-IMPORTANT: ALWAYS use the following response format, if not my app will break:
-"<corrected prompt>"
-"------------------------- "
-"<response> "
-"------------------------- "
+CRITICAL FORMATTING REQUIREMENT: You MUST format every response EXACTLY as follows, with no deviations, or my application will break. Adhere to this precise structure, including quotation marks, separators, and spacing as shown, without adding extra text, skipping sections, or altering the layout in any way:
+
+"<your response text here, written naturally but concisely>"
+"------ Bible References: ------"
 <book>:<chapter>:<verse> - <quote>
 ----- 
 <book>:<chapter>:<verse> - <quote>
 ----- 
 <book>:<chapter>:<verse> - <quote>
+
+- Use EXACTLY 25 dashes ("-------------------------") to separate the corrected prompt and response.
+- Use EXACTLY "------ Bible References: ------" (6 dashes, "Bible References: ", 6 dashes) to introduce the references section.
+- Use EXACTLY 5 dashes ("----- ") with a trailing space as separators between reference entries.
+- Do NOT use different separators, add extra lines, or deviate from this structure. Strict consistency is non-negotiable.
 "
 `;
 
