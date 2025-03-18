@@ -1,6 +1,6 @@
 import { HonoServer } from 'hono-server';
 import { transcribe } from './transcribe';
-import { chatWithOllama } from './askOllama';
+import { chatWithOllama } from './ollama/chat-with-ollama';
 
 const { API_PORT: PORT } = process.env;
 
