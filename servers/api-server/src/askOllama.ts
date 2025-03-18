@@ -2,7 +2,7 @@ import ollama from 'ollama';
 import type { Message } from 'ollama';
 
 
-export const chatWithOllama = async (transcription: string, messages: Message[]) => {
+export const chatWithOllama2 = async (transcription: string, messages: Message[]) => {
   const messagesForOllama = [
     { role: 'system', content: systemPrompt },
     ...messages,
@@ -17,29 +17,14 @@ export const chatWithOllama = async (transcription: string, messages: Message[])
     });
 
     console.log('Response:', response.message.content);
-    const jsonString = response.message.content.replace(/^```json\s*|\s*```$/g, '');
-    const parsedResponse = JSON.parse(jsonString);
-    console.log('Parsed response:', parsedResponse);
-    return parsedResponse;
+
+    return { text: response.message.content };
   } catch (error) {
     console.error('Error:', error);
     return { text: 'Error occurred', correctedQuestion: null };
   }
 }
 
-export const askOllama = async (transcription: string) => {
-  try {
-    const response = await ollama.generate({
-      model: 'gemma3:4b', // Use the model you pulled
-      prompt: transcription, // The text you want to generate from
-      stream: false, // Set to true for streaming (see below)
-    });
-
-    return { text: response.response }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
 
 const names: any = {
   am: 'Joel',
@@ -47,6 +32,58 @@ const names: any = {
   bm: 'Nathan',
   bf: 'Hannah',
 };
+
+export const chatWithOllama = async (transcription: string, messages: Message[]) => {
+  const messagesForOllama = [
+    { role: 'system', content: systemPrompt },
+    ...messages,
+    { role: 'user', content: transcription }
+  ];
+
+  try {
+    // Create a readable stream to collect the response chunks
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          // Enable streaming in the Ollama chat options
+          const response = await ollama.chat({
+            model: 'gemma3:4b',
+            messages: messagesForOllama,
+            stream: true, // Enable streaming
+          });
+
+          let fullResponse = '';
+
+          // Collect stream chunks
+          for await (const chunk of response) {
+            const content = chunk.message.content;
+            fullResponse += content;
+            console.log('Stream chunk:', content); // Log each chunk as it arrives
+          }
+
+          console.log('Response:', fullResponse);
+
+          // Enqueue the final result and close the stream
+          controller.enqueue({ text: fullResponse });
+          controller.close();
+        } catch (error) {
+          console.error('Stream error:', error);
+          controller.enqueue({ text: 'Error occurred', correctedQuestion: null });
+          controller.close();
+        }
+      }
+    });
+
+    // Read the stream and return the first (and only) value
+    const reader = stream.getReader();
+    const { value } = await reader.read();
+    return value;
+
+  } catch (error) {
+    console.error('Error:', error);
+    return { text: 'Error occurred', correctedQuestion: null };
+  }
+}
 
 const systemPrompt = `
 You are an expert on the Bible and a firm believer in the word of Jesus Christ. 
@@ -62,19 +99,37 @@ please try to maintain a conversational tone in your responses and craft your an
 short paragraph form, like a chat, unless the user asks for a deteiled explanation of something in which 
 case you should limit it to 2 or 3 short paragraphs, maximum of 50 words per paragraph.
 ending with cited Bible verses (e.g., Psalm 23:1-3).
-Since user inputs are transcribed from voice, expect potential typos or 
+IMPORTANT: Since user inputs are transcribed from voice, expect potential typos or 
 inconsistencies (e.g., 'byble' for 'Bible'); Interpret these with flexibility and include a 
 corrected version of the user's question in your response. 
+IMPORTANT: Please start with a disrtinct paragraph that includes the corrected question, always, even if 
+the corrected question is the same as the original question.
 
-please return your answer in JSON format with the following structure:
-{
-  "text": "Your response here",
-  "correctedQuestion": "Corrected question here"
-}
-
-IMPORTANT: Always include the corrected question, even if it is the same as the original question.
+Expected response format:"
+|CORRECTED PROMPT: <corrected question>|
+<response>
+|BIBLE VERSES: <cited verses>|
+"
 `;
 
 const defaultMessages = [
   { role: 'system', content: systemPrompt },
 ];
+
+
+
+
+
+export const askOllama = async (transcription: string) => {
+  try {
+    const response = await ollama.generate({
+      model: 'gemma3:4b', // Use the model you pulled
+      prompt: transcription, // The text you want to generate from
+      stream: false, // Set to true for streaming (see below)
+    });
+
+    return { text: response.response }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
