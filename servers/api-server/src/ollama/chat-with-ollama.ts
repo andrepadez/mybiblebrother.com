@@ -1,7 +1,11 @@
 import type { Message } from 'ollama';
 import { Ollama } from 'ollama';
 import { systemPrompt } from './system-prompt';
+import { synth } from './synthesize';
+import { Queue } from './Queue';
 const ollama = new Ollama();
+
+const audioQueue = new Queue();
 
 export const chatWithOllama = async (transcription: string, messages: Message[]) => {
   const messagesForOllama = [
@@ -27,10 +31,14 @@ export const chatWithOllama = async (transcription: string, messages: Message[])
           let answerSentence = '';
 
           const onCorrectedPrompt = (correctedQuestion: string) => {
-            console.log('Corrected question:', correctedQuestion);
+            // console.log('Corrected question:', correctedQuestion);
           };
-          const onAnswerSentence = (answerSentence: string) => {
-            console.log('Answer sentence:', answerSentence);
+
+          const onAnswerSentence = async (answerSentence: string, section: string) => {
+            if (section !== 'answer' || answerSentence.includes('-----')) return;
+            audioQueue.add(() => synth(answerSentence, 'af_heart'), (fileName: string) => {
+              console.log(fileName, answerSentence);
+            });
           };
 
           for await (const chunk of response) {
@@ -52,7 +60,7 @@ export const chatWithOllama = async (transcription: string, messages: Message[])
                 for (let i = 0; i < sentences.length; i++) {
                   if (sentences[i].match(/([.!?]\s|\n)/)) {
                     if (currentSentence.trim()) {
-                      onAnswerSentence(currentSentence.trim()); // Trigger callback
+                      onAnswerSentence(currentSentence.trim(), section); // Trigger callback
                     }
                     currentSentence = '';
                   } else {
@@ -62,7 +70,7 @@ export const chatWithOllama = async (transcription: string, messages: Message[])
                 answerSentence = currentSentence; // Keep remainder
               }
               if (buffer.includes('------ Bible References: ------')) {
-                if (answerSentence.trim()) onAnswerSentence(answerSentence.trim());
+                if (answerSentence.trim()) onAnswerSentence(answerSentence.trim(), section);
                 section = 'references';
                 buffer = '';
               }
@@ -83,13 +91,6 @@ export const chatWithOllama = async (transcription: string, messages: Message[])
     const reader = stream.getReader();
     const { value } = await reader.read();
 
-    // const lines = value.text.split('\n').filter((l: string) => !l.includes('------'));
-
-    // const correctedPrompt = lines.splice(0, 1).join('\n');
-    // console.log('\n\nCorrected Prompt:', correctedPrompt);
-
-    // console.log('\n\nValue:');
-    // console.log(lines)
     let correctedPrompt: string = '';
     let correctedPromptFinished: boolean = false;
     let answer: string = '';
@@ -101,14 +102,17 @@ export const chatWithOllama = async (transcription: string, messages: Message[])
       const is1stSeparator = line.includes('------');
       const is2ndSeparator = line.includes('- Bible References: -');
       if (!correctedPromptFinished && !is1stSeparator) correctedPrompt += line + '\n';
-      if (correctedPromptFinished && !answerFinished && !is2ndSeparator) answer += line + '\n';
+      if (correctedPromptFinished && !answerFinished && !is2ndSeparator) {
+        answer += line + '\n';
+      }
       if (is1stSeparator) correctedPromptFinished = true;
       if (correctedPromptFinished && is2ndSeparator) answerFinished = true;
       if (answerFinished && !is2ndSeparator) references.push(line);
     }
 
-    console.log('\n\nValue:');
-    console.log({ correctedPrompt, answer, references });
+    // console.log('\n\nValue:');
+    // lines.forEach((line: string) => console.log(line));
+    // console.log({ correctedPrompt, answer, references });
 
     return { correctedPrompt, text: answer, references };
 
