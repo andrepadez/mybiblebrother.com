@@ -5,24 +5,25 @@ const { VITE_FAST_WHISPER_URL } = process.env;
 
 const targetUrl = `${VITE_FAST_WHISPER_URL}/transcriptions`;
 
-export const transcribe = async (ctx: Context): Promise<TranscriptionResult> => {
-  const formData = await ctx.req.formData();
-  formData.append('model', 'base');
-  formData.append('language', 'en');
-  formData.append('initial_prompt', 'string');
-  formData.append('vad_filter', 'false');
-  formData.append('min_silence_duration_ms', '1000');
-  formData.append('response_format', 'text');
-  formData.append('timestamp_granularities', 'segment');
+export const transcribe = async (formData: FormData): Promise<TranscriptionResult> => {
+  const transcribeFormData = new FormData();
+  transcribeFormData.append('file', formData.get('file') as Blob, 'recording.wav');
+  transcribeFormData.append('model', 'base');
+  transcribeFormData.append('language', 'en');
+  transcribeFormData.append('initial_prompt', 'string');
+  transcribeFormData.append('vad_filter', 'false');
+  transcribeFormData.append('min_silence_duration_ms', '1000');
+  transcribeFormData.append('response_format', 'text');
+  transcribeFormData.append('timestamp_granularities', 'segment');
 
   // Prepare the fetch options to mirror the original request
   const fetchOptions = {
-    method: ctx.req.method,
+    method: 'POST',
     headers: {
       'host': new URL(targetUrl).host,
-      'authorization': ctx.req.header('authorization') || 'Bearer dummy_api_key', // Ensure auth is preserved
+      'authorization': 'Bearer dummy_api_key', // Ensure auth is preserved
     },
-    body: formData, // Forward the FormData directly
+    body: transcribeFormData, // Forward the FormData directly
     mode: 'cors',
     credentials: 'include',
   };

@@ -1,13 +1,15 @@
+import type { Context } from 'hono-server';
 import type { Message } from 'ollama';
 import { Ollama } from 'ollama';
 import { systemPrompt } from './system-prompt';
 import { synth } from './synthesize';
 import { Queue } from './Queue';
+
 const ollama = new Ollama();
 
 const audioQueue = new Queue();
 
-export const chatWithOllama = async (transcription: string, messages: Message[]) => {
+export const chatWithOllama = async (transcription: string, messages: Message[], ctx: Context) => {
   const messagesForOllama = [
     { role: 'system', content: systemPrompt },
     ...messages,
@@ -36,9 +38,10 @@ export const chatWithOllama = async (transcription: string, messages: Message[])
 
           const onAnswerSentence = async (answerSentence: string, section: string) => {
             if (section !== 'answer' || answerSentence.includes('-----')) return;
-            audioQueue.add(() => synth(answerSentence, 'af_heart'), (fileName: string) => {
-              console.log(fileName, answerSentence);
-            });
+            // audioQueue.add(() => synth(answerSentence, 'af_heart'), (fileName: string) => {
+            //   console.log(fileName, answerSentence);
+            // });
+            console.log(answerSentence);
           };
 
           for await (const chunk of response) {

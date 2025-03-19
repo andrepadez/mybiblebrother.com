@@ -157,7 +157,7 @@ export const useMicrophoneRecorder = () => {
       formData.append('history', JSON.stringify(formatHistoryForAPI()));
 
       const response = await fetch(
-        `${VITE_API_URL}/transcriptions`,
+        `${VITE_API_URL}/chat`,
         {
           method: 'POST',
           headers: {
@@ -173,6 +173,16 @@ export const useMicrophoneRecorder = () => {
       }
 
       const result = await response.json();
+
+      const url = `${VITE_API_URL}/chat-sse/${result.messageId}`;
+      const eventSource = new EventSource(url);
+      eventSource.addEventListener('progress', (message) => {
+        const data = JSON.parse(message.data);
+        console.log(data);
+        if (data.count >= 10) eventSource.close();
+      });
+      return;
+
 
       // Only add the transcription if there's actual text content
       if (result.text && result.text.trim() !== '') {
