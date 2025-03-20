@@ -1,5 +1,6 @@
 import { HonoServer } from 'hono-server';
 import { streamSSE } from 'hono/streaming';
+import { writeSSE } from './ollama/write-sse'
 import { transcribe } from './transcribe';
 import { chatWithOllama } from './ollama/chat-with-ollama';
 
@@ -24,20 +25,17 @@ app.get('/chat-sse/:messageId', async (ctx) => {
   const { messageId } = ctx.req.param();
   const formData = formDataMap.get(messageId);
   if (!formData) return ctx.json({ error: 'Message not found' }, 404);
-  // const transcription = await transcribe(formData!);
-  // const response = await chatWithOllama(transcription.text, [], ctx);
   return streamSSE(ctx, async (stream) => {
-    let count = 0;
-    while (count < 10) {
-      await stream.writeSSE({
-        data: JSON.stringify({ count: ++count, messageId }),
-        event: 'progress',
-        id: String(count),
-      })
-      await stream.sleep(1000)
-    }
+    const transcription = await transcribe(formData!);
+    const { text } = transcription;
+    const event = 'transcription';
+    writeSSE({ stream, event, id: messageId, data: { text } })
+    const response = await chatWithOllama(transcription.text, [], stream);
+    stream.close();
   })
 });
+
+
 
 export default app;
 

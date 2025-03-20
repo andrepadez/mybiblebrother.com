@@ -1,5 +1,7 @@
 import type { Context } from 'hono-server';
+import type { SSEStreamingApi } from 'hono/streaming'
 import type { Message } from 'ollama';
+import { writeSSE } from './write-sse'
 import { Ollama } from 'ollama';
 import { systemPrompt } from './system-prompt';
 import { synth } from './synthesize';
@@ -9,7 +11,7 @@ const ollama = new Ollama();
 
 const audioQueue = new Queue();
 
-export const chatWithOllama = async (transcription: string, messages: Message[], ctx: Context) => {
+export const chatWithOllama = async (transcription: string, messages: Message[], sseStream: SSEStreamingApi) => {
   const messagesForOllama = [
     { role: 'system', content: systemPrompt },
     ...messages,
@@ -28,7 +30,7 @@ export const chatWithOllama = async (transcription: string, messages: Message[],
           });
 
           let fullResponse = '';
-          let section = 'corrected';
+          let section = 'answer';
           let buffer = '';
           let answerSentence = '';
 
@@ -38,10 +40,15 @@ export const chatWithOllama = async (transcription: string, messages: Message[],
 
           const onAnswerSentence = async (answerSentence: string, section: string) => {
             if (section !== 'answer' || answerSentence.includes('-----')) return;
+            const event = 'answer-sentence';
+            const data = { text: answerSentence };
+            writeSSE({ stream: sseStream, event, id: 'lalala', data });
+            // audioQueue.add(() => synth(answerSentence, 'af_heart'), (fileName: string) => {
             // audioQueue.add(() => synth(answerSentence, 'af_heart'), (fileName: string) => {
             //   console.log(fileName, answerSentence);
+            //   const data = { fileName, text: answerSentence };
+            //   writeSSE({ stream: sseStream, event, id: 'lalala', data });
             // });
-            console.log(answerSentence);
           };
 
           for await (const chunk of response) {
@@ -49,12 +56,7 @@ export const chatWithOllama = async (transcription: string, messages: Message[],
             fullResponse += content;
             buffer += content;
 
-            if (section === 'corrected' && buffer.includes('-------------------------')) {
-              const correctedQuestion = buffer.split('-------------------------')[0];
-              onCorrectedPrompt(correctedQuestion);
-              buffer = buffer.slice(correctedQuestion.length + 25);
-              section = 'answer';
-            } else if (section === 'answer') {
+            if (section === 'answer') {
               answerSentence += content;
               // Split on sentence-ending punctuation OR newlines
               if (/([.!?]\s|\n)/.test(answerSentence) || buffer.includes('------ Bible References: ------')) {
@@ -116,6 +118,10 @@ export const chatWithOllama = async (transcription: string, messages: Message[],
     // console.log('\n\nValue:');
     // lines.forEach((line: string) => console.log(line));
     // console.log({ correctedPrompt, answer, references });
+
+    const event = 'bible-references';
+    const data = { references };
+    await writeSSE({ stream: sseStream, event, id: 'lalala', data });
 
     return { correctedPrompt, text: answer, references };
 

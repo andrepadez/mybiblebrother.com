@@ -25,10 +25,11 @@ export const synth = async (text: string, voice: string) => {
     const data: any = await result.json()
     return data.filename;
   } catch (ex) {
-    await fetch('https://ntfy.andrepadez.com/mlx-audio', {
-      method: 'POST', // PUT works too
-      body: 'Macbook synth process has crashed'
-    });
+    console.log('Error in synth', ex);
+    // await fetch('https://ntfy.andrepadez.com/mlx-audio', {
+    //   method: 'POST', // PUT works too
+    //   body: 'Macbook synth process has crashed'
+    // });
   }
 }
 

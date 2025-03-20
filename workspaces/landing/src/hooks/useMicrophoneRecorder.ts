@@ -176,11 +176,37 @@ export const useMicrophoneRecorder = () => {
 
       const url = `${VITE_API_URL}/chat-sse/${result.messageId}`;
       const eventSource = new EventSource(url);
-      eventSource.addEventListener('progress', (message) => {
+      eventSource.addEventListener('transcription', (message) => {
         const data = JSON.parse(message.data);
-        console.log(data);
-        if (data.count >= 10) eventSource.close();
+        const newTranscription = {
+          text: data.text,
+          timestamp: new Date().toISOString(),
+        };
+
+        setTranscriptions(prev => [newTranscription, ...prev]);
       });
+
+      eventSource.addEventListener('answer-sentence', (message) => {
+        const data = JSON.parse(message.data);
+        const newTranscription = {
+          text: data.text,
+          timestamp: new Date().toISOString(),
+        };
+
+        setTranscriptions(prev => [newTranscription, ...prev]);
+      });
+
+      eventSource.addEventListener('bible-references', (message) => {
+        const data = JSON.parse(message.data);
+        const newTranscription = {
+          text: data.text,
+          timestamp: new Date().toISOString(),
+        };
+
+        setTranscriptions(prev => [newTranscription, ...prev]);
+        eventSource.close();
+      });
+
       return;
 
 
