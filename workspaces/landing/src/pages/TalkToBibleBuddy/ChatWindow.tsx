@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react'
-import { Textarea } from '@/components/ui/textarea'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Card } from '@/components/ui/card'
 import { useIsMobile } from '@/hooks/use-mobile'
-import { Mic, Play } from 'lucide-react'
+import { Mic, Play, AudioWaveform } from 'lucide-react'
+import { InputForm } from './InputForm'
 import { useMicrophone } from './useMicrophone'
 import { useChat } from './useChat'
 
@@ -19,21 +19,23 @@ interface ChatWindowProps {
 
 export const ChatWindow = ({ messages }: ChatWindowProps) => {
   const isMobile = useIsMobile()
-  const [inputValue, setInputValue] = useState('')
   const [playingMessageIndex, setPlayingMessageIndex] = useState<number | null>(null)
   const microphone = useMicrophone()
   const { micPermission, isRecording, audioBlob } = microphone
   const { requestMicPermission, startRecording, stopRecording } = microphone
   const { transcription, setTranscription, isTranscribing } = useChat(audioBlob)
+  const contentEditableRef = useRef<HTMLDivElement>(null)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTranscription(e.target.value)
+  // Handle input changes from the contentEditable div
+  const handleContentChange = () => {
+    if (contentEditableRef.current) {
+      setTranscription(contentEditableRef.current.innerText)
+    }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = () => {
     // Handle message submission here
-    setInputValue('')
+    setTranscription('')
   }
 
   const handleRecordPress = async () => {
@@ -85,7 +87,6 @@ export const ChatWindow = ({ messages }: ChatWindowProps) => {
                   className={`grid grid-cols-[1fr,auto] gap-2 items-center ${!message.isUser ? 'mb-1' : ''}`}
                 >
                   <p className="text-sm">{message.text}</p>
-
                   {/* Play button - only for non-user messages */}
                   {!message.isUser && (
                     <button
@@ -122,48 +123,25 @@ export const ChatWindow = ({ messages }: ChatWindowProps) => {
       {/* Message Input */}
       <div className="p-4 bg-white border-t">
         <div className="flex items-center gap-3">
-          {/* Form with input field */}
-          <form
-            onSubmit={handleSubmit}
-            className={`flex items-center bg-[#F1F1F1] rounded-full px-4 ${isMobile ? 'py-2 flex-grow' : 'py-3 w-[calc(100%-64px)]'}`}
-          >
-            <Textarea
-              disabled={isTranscribing}
-              value={transcription || ''}
-              onChange={handleInputChange}
-              placeholder="Message Bible Buddy..."
-              className="flex-grow field-sizing-content h-24 bg-transparent border-none focus:outline-none text-sm"
-            />
-          </form>
-
+          <InputForm value={transcription} onSubmit={handleSubmit} onChange={setTranscription} />
           {/* Microphone button outside the form on desktop */}
           <button
             type="button"
-            disabled={isTranscribing}
             className={`flex items-center justify-center rounded-full transition-all ${
-              isRecording ? 'bg-red-500' : 'bg-bible-skyblue hover:bg-bible-skyblue/90'
+              isRecording
+                ? 'bg-red-500 animate-pulse'
+                : 'bg-bible-skyblue hover:bg-bible-skyblue/90'
             } ${isMobile ? 'h-8 w-8 ml-[-48px]' : 'h-16 w-16'}`}
             onMouseDown={handleRecordPress}
             onMouseUp={handleRecordRelease}
             onTouchStart={handleRecordPress}
             onTouchEnd={handleRecordRelease}
           >
-            <Mic className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
-          </button>
-
-          {/* Microphone button outside the form on desktop */}
-          <button
-            type="button"
-            disabled={isTranscribing}
-            className={`flex items-center justify-center rounded-full transition-all ${
-              isRecording ? 'bg-red-500' : 'bg-bible-skyblue hover:bg-bible-skyblue/90'
-            } ${isMobile ? 'h-8 w-8 ml-[-48px]' : 'h-16 w-16'}`}
-            onMouseDown={handleRecordPress}
-            onMouseUp={handleRecordRelease}
-            onTouchStart={handleRecordPress}
-            onTouchEnd={handleRecordRelease}
-          >
-            <Mic className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
+            {isRecording ? (
+              <AudioWaveform className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
+            ) : (
+              <Mic className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
+            )}
           </button>
         </div>
       </div>

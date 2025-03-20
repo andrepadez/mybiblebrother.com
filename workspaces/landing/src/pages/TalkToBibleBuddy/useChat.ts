@@ -25,6 +25,7 @@ export const useChat = (audioBlob: Blob) => {
     );
 
     const result = await response.json();
+    console.log('result.text', result.text);
     setTranscription(result.text);
     await new Promise(resolve => setTimeout(resolve, 300));
     setIsTranscribing(false);
