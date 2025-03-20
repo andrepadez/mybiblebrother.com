@@ -11,7 +11,7 @@ const ollama = new Ollama();
 
 const audioQueue = new Queue();
 
-export const chatWithOllama = async (transcription: string, messages: Message[], sseStream: SSEStreamingApi) => {
+export const chatWithOllama = async (transcription: string, messages: Message[], sseStream: SSEStreamingApi, messageId: string) => {
   const messagesForOllama = [
     { role: 'system', content: systemPrompt },
     ...messages,
@@ -40,15 +40,23 @@ export const chatWithOllama = async (transcription: string, messages: Message[],
 
           const onAnswerSentence = async (answerSentence: string, section: string) => {
             if (section !== 'answer' || answerSentence.includes('-----')) return;
-            const event = 'answer-sentence';
-            const data = { text: answerSentence };
-            writeSSE({ stream: sseStream, event, id: 'lalala', data });
-            // audioQueue.add(() => synth(answerSentence, 'af_heart'), (fileName: string) => {
-            // audioQueue.add(() => synth(answerSentence, 'af_heart'), (fileName: string) => {
-            //   console.log(fileName, answerSentence);
-            //   const data = { fileName, text: answerSentence };
-            //   writeSSE({ stream: sseStream, event, id: 'lalala', data });
-            // });
+            const event = 'answer_sentence';
+            // const data = { text: answerSentence };
+            // writeSSE({ stream: sseStream, event, id: 'lalala', data });
+            console.log('synth', answerSentence);
+            audioQueue.add(() => synth(answerSentence, 'af_heart'), async (fileName: string) => {
+              console.log('synth done', fileName, answerSentence);
+              const data = { fileName, text: answerSentence };
+              const payload = `event: ${event}\ndata: ${JSON.stringify(data)}\nid: ${messageId}\n\n`
+              // const id = Math.floor(Math.random() * 1000000).toString();
+              await sseStream.write(payload);
+
+              // if (true) {
+              //   const event = 'bible_references';
+              //   const data = { references };
+              //   await writeSSE({ stream: sseStream, event, id: 'lalala', data });
+              // }
+            });
           };
 
           for await (const chunk of response) {
@@ -118,10 +126,6 @@ export const chatWithOllama = async (transcription: string, messages: Message[],
     // console.log('\n\nValue:');
     // lines.forEach((line: string) => console.log(line));
     // console.log({ correctedPrompt, answer, references });
-
-    const event = 'bible-references';
-    const data = { references };
-    await writeSSE({ stream: sseStream, event, id: 'lalala', data });
 
     return { correctedPrompt, text: answer, references };
 

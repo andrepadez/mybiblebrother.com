@@ -176,36 +176,51 @@ export const useMicrophoneRecorder = () => {
 
       const url = `${VITE_API_URL}/chat-sse/${result.messageId}`;
       const eventSource = new EventSource(url);
-      eventSource.addEventListener('transcription', (message) => {
-        const data = JSON.parse(message.data);
-        const newTranscription = {
-          text: data.text,
-          timestamp: new Date().toISOString(),
-        };
 
-        setTranscriptions(prev => [newTranscription, ...prev]);
-      });
 
-      eventSource.addEventListener('answer-sentence', (message) => {
-        const data = JSON.parse(message.data);
-        const newTranscription = {
-          text: data.text,
-          timestamp: new Date().toISOString(),
-        };
+      eventSource.onmessage = (message) => {
+        console.log('message:', message);
+      };
 
-        setTranscriptions(prev => [newTranscription, ...prev]);
-      });
+      // eventSource.addEventListener('transcription', (message) => {
+      //   const data = JSON.parse(message.data);
+      //   console.log('transcription:', data.text);
+      //   const newTranscription = {
+      //     text: data.text,
+      //     timestamp: new Date().toISOString(),
+      //   };
 
-      eventSource.addEventListener('bible-references', (message) => {
-        const data = JSON.parse(message.data);
-        const newTranscription = {
-          text: data.text,
-          timestamp: new Date().toISOString(),
-        };
+      //   setTranscriptions(prev => [newTranscription, ...prev]);
+      // });
 
-        setTranscriptions(prev => [newTranscription, ...prev]);
+      // eventSource.addEventListener('answer_sentence', (message) => {
+      //   console.log('answer-sentence:');
+      //   // const data = JSON.parse(message.data);
+      //   // console.log('answer-sentence:', data);
+      //   // const newTranscription = {
+      //   //   text: data.text,
+      //   //   timestamp: new Date().toISOString(),
+      //   // };
+
+      //   // setTranscriptions(prev => [...prev, newTranscription]);
+      // });
+
+      // eventSource.addEventListener('bible_references', (message) => {
+      //   const data = JSON.parse(message.data);
+      //   console.log('bible-references:', data);
+      //   const newTranscription = {
+      //     text: data.text,
+      //     timestamp: new Date().toISOString(),
+      //   };
+
+      //   setTranscriptions(prev => [...prev, newTranscription]);
+      //   eventSource.close();
+      // });
+
+      eventSource.onerror = (error) => {
+        console.error('EventSource error:', error);
         eventSource.close();
-      });
+      };
 
       return;
 

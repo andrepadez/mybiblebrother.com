@@ -12,6 +12,13 @@ app.use('/', async (ctx) => ctx.json({ bibleBuddyAPIServer: 'v0.1.0' }));
 
 const formDataMap = new Map<string, FormData>();
 
+app.post('/transcribe', async (ctx) => {
+  console.log('/transcribe');
+  const formData = await ctx.req.formData();
+  const transcription = await transcribe(formData!);
+  return ctx.json(transcription);
+});
+
 app.post('/chat', async (ctx) => {
   const origin = ctx.req.header('Origin');
   const messageId = Math.random().toString(36).substring(2, 15) +
@@ -29,8 +36,14 @@ app.get('/chat-sse/:messageId', async (ctx) => {
     const transcription = await transcribe(formData!);
     const { text } = transcription;
     const event = 'transcription';
-    writeSSE({ stream, event, id: messageId, data: { text } })
-    const response = await chatWithOllama(transcription.text, [], stream);
+    for (let i = 0; i < 10; i++) {
+      await stream.writeSSE({
+        data: text,
+        event: 'time-update',
+        id: String(i),
+      })
+    }
+    // const response = await chatWithOllama(transcription.text, [], stream, messageId);
     stream.close();
   })
 });

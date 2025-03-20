@@ -19,8 +19,8 @@ export class Queue {
       try {
         console.log("Processing task...");
         const result = await task(); // Get the result of the task
-        console.log('task result', result);
         if (callback) callback(result); // Pass the result to the callback
+        await new Promise((resolve) => setTimeout(resolve, 200)); // Wait for 1 second
       } catch (error) {
         console.error("Task failed:", error);
       }

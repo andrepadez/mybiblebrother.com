@@ -1,14 +1,12 @@
-
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Mic, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button'
+import { Mic, Play } from 'lucide-react'
 
 interface AudioRecorderProps {
-  isRecording: boolean;
-  audioBlob: Blob | null;
-  startRecording: () => void;
-  stopRecording: () => void;
-  playRecording: () => void;
+  isRecording: boolean
+  audioBlob: Blob | null
+  startRecording: () => void
+  stopRecording: () => void
+  playRecording: () => void
 }
 
 export const AudioRecorder = ({
@@ -23,12 +21,10 @@ export const AudioRecorder = ({
       <div className="text-center">
         <p className="mb-6 text-lg">Press and hold to record your question</p>
       </div>
-      
+
       <button
         className={`w-32 h-32 rounded-full flex items-center justify-center transition-all ${
-          isRecording 
-            ? "bg-red-500 scale-110" 
-            : "bg-bible-skyblue hover:bg-bible-skyblue/90"
+          isRecording ? 'bg-red-500 scale-110' : 'bg-bible-skyblue hover:bg-bible-skyblue/90'
         }`}
         onMouseDown={startRecording}
         onMouseUp={stopRecording}
@@ -37,7 +33,7 @@ export const AudioRecorder = ({
       >
         <Mic className="text-white" size={48} />
       </button>
-      
+
       {audioBlob && (
         <div className="mt-4 text-center">
           <p className="mb-4">Recording complete! Listen to your question:</p>
@@ -51,5 +47,5 @@ export const AudioRecorder = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
