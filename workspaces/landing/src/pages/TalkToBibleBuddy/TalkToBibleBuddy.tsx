@@ -9,7 +9,7 @@ export const TalkToBibleBuddy = () => {
   const mockMessages = []
 
   return (
-    <div className="h-screen overflow-hidden bg-bible-light">
+    <div className="h-screen overflow-hidden bg-bible-light pt-16">
       <div className={`mx-auto ${isMobile ? 'w-full' : 'container px-4'}`}>
         <ChatWindow messages={mockMessages} />
       </div>

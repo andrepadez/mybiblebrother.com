@@ -1,7 +1,7 @@
-
 import React from 'react'
 
 const Footer: React.FC = () => {
+  return null
   return (
     <>
       {/* Footer - Fixed at bottom with padding to prevent content overlap */}

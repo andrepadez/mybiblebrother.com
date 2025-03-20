@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Textarea } from '@/components/ui/textarea'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Card } from '@/components/ui/card'
 import { useIsMobile } from '@/hooks/use-mobile'
@@ -25,7 +26,7 @@ export const ChatWindow = ({ messages }: ChatWindowProps) => {
   const { requestMicPermission, startRecording, stopRecording } = microphone
   const { transcription, setTranscription, isTranscribing } = useChat(audioBlob)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTranscription(e.target.value)
   }
 
@@ -126,15 +127,29 @@ export const ChatWindow = ({ messages }: ChatWindowProps) => {
             onSubmit={handleSubmit}
             className={`flex items-center bg-[#F1F1F1] rounded-full px-4 ${isMobile ? 'py-2 flex-grow' : 'py-3 w-[calc(100%-64px)]'}`}
           >
-            <input
-              type="text"
+            <Textarea
               disabled={isTranscribing}
               value={transcription || ''}
               onChange={handleInputChange}
               placeholder="Message Bible Buddy..."
-              className="flex-grow bg-transparent border-none focus:outline-none text-sm"
+              className="flex-grow field-sizing-content h-24 bg-transparent border-none focus:outline-none text-sm"
             />
           </form>
+
+          {/* Microphone button outside the form on desktop */}
+          <button
+            type="button"
+            disabled={isTranscribing}
+            className={`flex items-center justify-center rounded-full transition-all ${
+              isRecording ? 'bg-red-500' : 'bg-bible-skyblue hover:bg-bible-skyblue/90'
+            } ${isMobile ? 'h-8 w-8 ml-[-48px]' : 'h-16 w-16'}`}
+            onMouseDown={handleRecordPress}
+            onMouseUp={handleRecordRelease}
+            onTouchStart={handleRecordPress}
+            onTouchEnd={handleRecordRelease}
+          >
+            <Mic className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
+          </button>
 
           {/* Microphone button outside the form on desktop */}
           <button
