@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 const { VITE_API_URL } = import.meta.env;
 
-export const useChat = (audioBlob: Blob) => {
+export const useTranscribe = (audioBlob: Blob) => {
   const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
   const [blob, setBlob] = useState<Blob | null>(() => audioBlob);
   const [transcription, setTranscription] = useState<string | null>(null);
@@ -27,7 +27,19 @@ export const useChat = (audioBlob: Blob) => {
     }
   }, [blob]);
 
-  return { transcription, setTranscription, isTranscribing }
+  const handleRecordPress = async () => {
+    if (!micPermission) {
+      await requestMicPermission()
+      return
+    }
+    if (isRecording) {
+      stopRecording()
+    } else {
+      startRecording()
+    }
+  }
+
+  return { transcription, setTranscription, isTranscribing, handleRecordPress }
 }
 
 

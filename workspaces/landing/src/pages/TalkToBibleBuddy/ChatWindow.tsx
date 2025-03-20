@@ -5,7 +5,7 @@ import { useIsMobile } from '@/hooks/use-mobile'
 import { Mic, Play, AudioWaveform } from 'lucide-react'
 import { InputForm } from './InputForm'
 import { useMicrophone } from './useMicrophone'
-import { useChat } from './useChat'
+import { useTranscribe } from './useTranscribe'
 
 interface Message {
   text: string
@@ -17,42 +17,44 @@ interface ChatWindowProps {
   messages: Message[]
 }
 
+// Custom loading animation component
+const LoadingIndicator = () => {
+  const isMobile = useIsMobile()
+  return (
+    <div className="flex items-center justify-center gap-1">
+      <span
+        className={`inline-block w-2 h-2 rounded-full bg-white animate-[pulse_1.5s_ease-in-out_infinite] ${
+          isMobile ? 'w-1 h-1' : ''
+        }`}
+        style={{ animationDelay: '0s' }}
+      />
+      <span
+        className={`inline-block w-2 h-2 rounded-full bg-white animate-[pulse_1.5s_ease-in-out_infinite] ${
+          isMobile ? 'w-1 h-1' : ''
+        }`}
+        style={{ animationDelay: '0.3s' }}
+      />
+      <span
+        className={`inline-block w-2 h-2 rounded-full bg-white animate-[pulse_1.5s_ease-in-out_infinite] ${
+          isMobile ? 'w-1 h-1' : ''
+        }`}
+        style={{ animationDelay: '0.6s' }}
+      />
+    </div>
+  )
+}
+
 export const ChatWindow = ({ messages }: ChatWindowProps) => {
   const isMobile = useIsMobile()
   const [playingMessageIndex, setPlayingMessageIndex] = useState<number | null>(null)
   const microphone = useMicrophone()
-  const { micPermission, isRecording, audioBlob } = microphone
-  const { requestMicPermission, startRecording, stopRecording } = microphone
-  const { transcription, setTranscription, isTranscribing } = useChat(audioBlob)
-  const contentEditableRef = useRef<HTMLDivElement>(null)
-
-  // Handle input changes from the contentEditable div
-  const handleContentChange = () => {
-    if (contentEditableRef.current) {
-      setTranscription(contentEditableRef.current.innerText)
-    }
-  }
+  const { isRecording, audioBlob } = microphone
+  const { transcription, setTranscription, isTranscribing, handleRecordPress } =
+    useTranscribe(audioBlob)
 
   const handleSubmit = () => {
     // Handle message submission here
     setTranscription('')
-  }
-
-  const handleRecordPress = async () => {
-    if (!micPermission) {
-      await requestMicPermission()
-      return
-    }
-    if (isRecording) {
-      stopRecording()
-    } else {
-      startRecording()
-    }
-  }
-
-  const handleRecordRelease = () => {
-    // setIsRecording(false)
-    // Handle recording completion here
   }
 
   const handlePlayMessage = (index: number) => {
@@ -68,7 +70,7 @@ export const ChatWindow = ({ messages }: ChatWindowProps) => {
     >
       {/* Header */}
       <div className="bg-white p-4 border-b">
-        <h2 className="text-lg font-semibold text-center">Bible Buddy</h2>
+        <h2 className="text-lg font-semibold text-center">Bible Pal</h2>
       </div>
 
       {/* Messages */}
@@ -122,27 +124,39 @@ export const ChatWindow = ({ messages }: ChatWindowProps) => {
 
       {/* Message Input */}
       <div className="p-4 bg-white border-t">
-        <div className="flex items-center gap-3">
-          <InputForm value={transcription} onSubmit={handleSubmit} onChange={setTranscription} />
+        <div className="flex justify-between items-center gap-3">
+          <InputForm
+            value={transcription}
+            onSubmit={handleSubmit}
+            onChange={setTranscription}
+            disabled={isTranscribing || isRecording}
+          />
           {/* Microphone button outside the form on desktop */}
-          <button
-            type="button"
-            className={`flex items-center justify-center rounded-full transition-all ${
-              isRecording
-                ? 'bg-red-500 animate-pulse'
-                : 'bg-bible-skyblue hover:bg-bible-skyblue/90'
-            } ${isMobile ? 'h-8 w-8 ml-[-48px]' : 'h-16 w-16'}`}
-            onMouseDown={handleRecordPress}
-            onMouseUp={handleRecordRelease}
-            onTouchStart={handleRecordPress}
-            onTouchEnd={handleRecordRelease}
-          >
-            {isRecording ? (
-              <AudioWaveform className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
-            ) : (
-              <Mic className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
-            )}
-          </button>
+          <div>
+            <button
+              type="button"
+              className={`flex items-center justify-center rounded-full transition-all ${
+                isTranscribing
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : isRecording
+                    ? 'bg-red-500 animate-pulse'
+                    : 'bg-bible-skyblue hover:bg-bible-skyblue/90'
+              } ${isMobile ? 'h-8 w-8 ml-[-48px]' : 'h-16 w-16'}`}
+              onMouseDown={handleRecordPress}
+              // onMouseUp={handleRecordRelease}
+              onTouchStart={handleRecordPress}
+              // onTouchEnd={handleRecordRelease}
+              disabled={isTranscribing}
+            >
+              {isTranscribing ? (
+                <LoadingIndicator />
+              ) : isRecording ? (
+                <AudioWaveform className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
+              ) : (
+                <Mic className={`text-white ${isMobile ? 'h-4 w-4' : 'h-8 w-8'}`} />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </Card>

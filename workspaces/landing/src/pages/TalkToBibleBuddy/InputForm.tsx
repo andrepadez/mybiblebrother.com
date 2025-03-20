@@ -5,21 +5,42 @@ type InputFormProps = {
   value: string | null
   onChange: (value: string) => void
   onSubmit: (value: string) => void
+  disabled?: boolean
 }
 
-export const InputForm = ({ value, onSubmit, onChange }: InputFormProps) => {
+export const InputForm = ({ value, onSubmit, onChange, disabled }: InputFormProps) => {
   const contentEditableRef = useRef<HTMLDivElement>(null)
 
+  const handleChange = (ev: React.ChangeEvent<HTMLDivElement>) => {
+    const newValue = ev.target.innerText
+    onChange(newValue)
+
+    // Restore cursor position
+    const selection = window.getSelection()
+    if (selection && contentEditableRef.current) {
+      const range = document.createRange()
+      range.selectNodeContents(contentEditableRef.current)
+      range.collapse(false) // collapse to end
+      selection.removeAllRanges()
+      selection.addRange(range)
+    }
+  }
+
+  // Add this to initialize the content when component mounts or value changes externally
   useEffect(() => {
-    if (value && contentEditableRef.current) {
+    if (
+      contentEditableRef.current &&
+      value !== null &&
+      contentEditableRef.current.innerText !== value
+    ) {
       contentEditableRef.current.innerText = value
     }
-  }, [value, contentEditableRef])
+  }, [value])
 
   const onKeyDown = (ev: React.KeyboardEvent) => {
-    if (ev.key === 'Enter' && !e.shiftKey) {
+    if (ev.key === 'Enter' && !ev.shiftKey) {
       ev.preventDefault()
-      onSubmit()
+      onSubmit(value)
     }
   }
 
@@ -28,14 +49,10 @@ export const InputForm = ({ value, onSubmit, onChange }: InputFormProps) => {
     onSubmit(value)
   }
 
-  const handleChange = (ev: React.ChangeEvent<HTMLDivElement>) => {
-    onChange(ev.target.innerText)
-  }
-
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center bg-[#F1F1F1] rounded-full px-4 py-2 w-full"
+      className="flex items-center bg-[#F1F1F1] rounded-full px-4 py-2 flex-1"
     >
       <div
         ref={contentEditableRef}
@@ -53,8 +70,13 @@ export const InputForm = ({ value, onSubmit, onChange }: InputFormProps) => {
       {value && (
         <button
           type="submit"
-          className="ml-2 p-2 rounded-full text-bible-skyblue hover:bg-bible-skyblue/10 transition-colors"
+          className={`ml-2 p-2 rounded-full transition-colors ${
+            disabled
+              ? 'text-gray-400 cursor-not-allowed'
+              : 'text-bible-skyblue hover:bg-bible-skyblue/10'
+          }`}
           aria-label="Send message"
+          disabled={disabled}
         >
           <Send size={36} />
         </button>
