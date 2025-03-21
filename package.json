@@ -10,7 +10,7 @@
     "start:api": "cd servers/api-server && bun run start",
     "build:api": "cd servers/api-server && bun run build",
     "dev:landing": "cd workspaces/landing && bun run dev",
-    "start:landing": "cd workspaces/landing && bun run start",
+    "start:landing": "cd workspaces/landing && bun run preview",
     "build:landing": "cd workspaces/landing && bun run build"
   },
   "workspaces": [
