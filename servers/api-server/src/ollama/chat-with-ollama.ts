@@ -1,7 +1,4 @@
-import type { Context } from 'hono-server';
-import type { SSEStreamingApi } from 'hono/streaming'
 import type { Message } from 'ollama';
-import { writeSSE } from './write-sse'
 import { Ollama } from 'ollama';
 import { systemPrompt } from './system-prompt';
 import { synth } from './synthesize';
@@ -11,11 +8,11 @@ const ollama = new Ollama();
 
 const audioQueue = new Queue();
 
-export const chatWithOllama = async (transcription: string, messages: Message[], sseStream: SSEStreamingApi, messageId: string) => {
+export const chatWithOllama = async (message: string, messages: Message[]) => {
   const messagesForOllama = [
     { role: 'system', content: systemPrompt },
     ...messages,
-    { role: 'user', content: transcription }
+    { role: 'user', content: message }
   ];
 
   try {
@@ -46,10 +43,10 @@ export const chatWithOllama = async (transcription: string, messages: Message[],
             console.log('synth', answerSentence);
             audioQueue.add(() => synth(answerSentence, 'af_heart'), async (fileName: string) => {
               console.log('synth done', fileName, answerSentence);
-              const data = { fileName, text: answerSentence };
-              const payload = `event: ${event}\ndata: ${JSON.stringify(data)}\nid: ${messageId}\n\n`
+              // const data = { fileName, text: answerSentence };
+              // const payload = `event: ${event}\ndata: ${JSON.stringify(data)}\nid: ${messageId}\n\n`
               // const id = Math.floor(Math.random() * 1000000).toString();
-              await sseStream.write(payload);
+              // await sseStream.write(payload);
 
               // if (true) {
               //   const event = 'bible_references';

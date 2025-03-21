@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useMicrophone } from './useMicrophone'
 const { VITE_API_URL } = import.meta.env;
 
-export const useTranscribe = (audioBlob: Blob) => {
+export const useTranscribe = () => {
+  const microphone = useMicrophone()
+  const { isRecording, audioBlob, micPermission } = microphone
+  const { startRecording, stopRecording, requestMicPermission } = microphone
   const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
   const [blob, setBlob] = useState<Blob | null>(() => audioBlob);
   const [transcription, setTranscription] = useState<string | null>(null);
@@ -39,9 +43,10 @@ export const useTranscribe = (audioBlob: Blob) => {
     }
   }
 
-  return { transcription, setTranscription, isTranscribing, handleRecordPress }
+  return { transcription, setTranscription, isTranscribing, handleRecordPress, ...microphone }
 }
 
+export type useTranscribeType = ReturnType<typeof useTranscribe>
 
 const sendAudio = async (audioBlob: Blob) => {
   console.log('Transcribing...');

@@ -1,5 +1,5 @@
-import type { User, Experiment, Variant } from 'types';
-import type { ServerWebSocket } from 'bun'
+// import type { User, Experiment, Variant } from 'types';
+import type { ServerWebSocket } from 'bun';
 // import { $ } from 'bun';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -14,17 +14,25 @@ export * from 'hono';
 // export * from './custom-errors';
 
 export type HonoVariables = {
-  body: any;
-  origin: string;
-  user: User;
-  experiment: Experiment;
-  variant: Variant;
+  // body: any;
+  // origin: string;
+  // user: User;
+  // experiment: Experiment;
+  // variant: Variant;
 };
+
+
 
 
 export const HonoRouter = () => new Hono<{ Variables: HonoVariables }>();
 
-export const HonoServer = (port: string, serverName: string) => {
+type HonoServer = (
+  port: string,
+  serverName: string,
+  onSocketMessage?: (ws: any, message: string) => void
+) => Hono<{ Variables: HonoVariables }>;
+
+export const HonoServer: HonoServer = (port, serverName, onSocketMessage) => {
   const app = new Hono<{ Variables: HonoVariables }>();
   app.use(cors({
     origin: '*', // Adjust the origin as needed
@@ -42,7 +50,7 @@ export const HonoServer = (port: string, serverName: string) => {
     const headers = ctx.req.header();
     const stack = error.stack;
     const message = error.message;
-    const { body, user } = ctx.var;
+    // const { body, user } = ctx.var;
     const url = ctx.req.url;
     const method = ctx.req.method;
     const timestamp = new Date().toLocaleString();
@@ -66,7 +74,7 @@ export const HonoServer = (port: string, serverName: string) => {
 
     console.log('message', message);
     console.log('stack', stack);
-    console.log('body', body);
+    // console.log('body', body);
 
     // if (error instanceof CustomError && error.returnValue) {
     //   if (typeof error.returnValue === 'string') {
@@ -83,12 +91,25 @@ export const HonoServer = (port: string, serverName: string) => {
 
   app.get(
     '/ws',
-    upgradeWebSocket((c) => {
+    upgradeWebSocket((ctx) => {
       return {
         onOpen: () => {
           // console.log('Connection opened', serverName)
         },
-        async onMessage() { },
+        onMessage: async (evt, ws: any) => {
+          const origin = ctx.req.header('Origin');
+          console.log('origin', origin);
+          if (onSocketMessage) {
+            if (typeof evt.data === 'string') {
+              const data = JSON.parse(evt.data);
+              onSocketMessage(ws, data);
+            } else if (evt.data instanceof Blob) {
+              const text = await evt.data.text();
+              const data = JSON.parse(text);
+              onSocketMessage(ws, text);
+            }
+          }
+        },
         onClose: () => {
           // console.log('Connection closed', serverName)
         },
