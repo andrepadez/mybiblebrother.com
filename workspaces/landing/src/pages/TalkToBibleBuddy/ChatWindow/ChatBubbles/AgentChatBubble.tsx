@@ -10,7 +10,7 @@ export const AgentChatBubble = ({ message }) => {
         <div
           className={`grid grid-cols-[1fr,auto] gap-2 items-center ${message.role === 'agent' ? 'mb-1' : ''}`}
         >
-          <p className="text-sm">{message.content}</p>
+          <p className="text-sm whitespace-pre-wrap leading-loose">{message.content}</p>
           {/* Play button - only for non-user messages */}
           {message.role === 'agent' && (
             <button

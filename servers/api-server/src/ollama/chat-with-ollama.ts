@@ -3,6 +3,7 @@ import { Ollama } from 'ollama';
 import { systemPrompt } from './system-prompt';
 import { synth } from './synthesize';
 import { Queue } from './Queue';
+import { stripMarkdown } from './strip-markdown';
 
 const ollama = new Ollama();
 
@@ -13,16 +14,19 @@ export type SendMessageParams = { text: string, fileName?: string, finished?: bo
 type ChatWithOllamaParams = {
   message: Message,
   messages: Message[],
-  sendMessage: ({ text, finished, fileName }: SendMessageParams) => void
+  sendMessage: ({ text, finished, fileName }: SendMessageParams) => void,
+  reportLineCount: (count: number) => void,
 }
 
 export const chatWithOllama = async (params: ChatWithOllamaParams) => {
-  const { message, messages, sendMessage } = params;
+  const { message, messages, sendMessage, reportLineCount } = params;
   const messagesForOllama = [
     { role: 'system', content: systemPrompt },
     ...messages,
     message
   ];
+
+  console.log('messagesForOllama', messagesForOllama);
 
   try {
     // Create a readable stream to collect the response chunks
@@ -30,7 +34,7 @@ export const chatWithOllama = async (params: ChatWithOllamaParams) => {
       async start(controller) {
         try {
           const response = await ollama.chat({
-            model: 'gemma3:4b',
+            model: 'ALIENTELLIGENCE/holybible',
             messages: messagesForOllama,
             stream: true,
           });
@@ -40,16 +44,24 @@ export const chatWithOllama = async (params: ChatWithOllamaParams) => {
           let buffer = '';
           let answerSentence = '';
 
+          let lineCount: number = 0;
           const onAnswerSentence = async (text: string, section: string) => {
             if (text.trim().length < 0) return;
             const finished = text.includes('-----');
+            if (finished) {
+              reportLineCount(lineCount);
+            }
+
+            lineCount++;
 
             if (!finished) {
+              const strippedText = stripMarkdown(text);
+              console.log('adding to queue', lineCount, strippedText);
               audioQueue.add(
-                () => synth(text, 'af_heart'),
+                () => synth(strippedText, 'af_heart'),
                 async (fileName) => {
-                  console.log('synth finished', fileName, text);
-                  sendMessage({ text, fileName });
+                  console.log('synth finished', fileName,);
+                  sendMessage({ text: strippedText, fileName });
                 }
               );
             } else {

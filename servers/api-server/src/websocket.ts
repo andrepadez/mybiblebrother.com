@@ -7,8 +7,18 @@ export const onSocketMessage = async (ws: any, payload: any) => {
     // console.log(payload);
     const { message, messages } = payload;
     const sendMessage = setupSendMessage(socket);
-    const result = await chatWithOllama({ message, messages, sendMessage });
+    const reportLineCount = setupReportLineCount(socket);
+    await chatWithOllama({ message, messages, sendMessage, reportLineCount });
   }
+}
+
+export const setupReportLineCount = (ws: WebSocket) => (count: number) => {
+  console.log('sending line-count', count);
+  const payload = {
+    type: 'line-count',
+    count,
+  }
+  ws.send(JSON.stringify(payload));
 }
 
 
@@ -20,7 +30,7 @@ export const setupSendMessage = (ws: WebSocket) =>
       message: {
         content: text,
         role: 'agent',
-        fileName,
+        fileNames: [fileName],
       }
     }
     ws.send(JSON.stringify(payload));
