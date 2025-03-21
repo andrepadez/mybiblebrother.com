@@ -1,8 +1,6 @@
 import { HonoServer } from 'hono-server';
-import { streamSSE } from 'hono/streaming';
 import { transcribe } from './transcribe';
 import { onSocketMessage } from './websocket';
-import { chatWithOllama } from './ollama/chat-with-ollama';
 
 const { API_PORT: PORT } = process.env;
 
@@ -15,12 +13,12 @@ app.post('/transcribe', async (ctx) => {
   return ctx.json(transcription);
 });
 
-app.post('/chat', async (ctx) => {
-  const { message } = await ctx.req.json();
-  // const origin = ctx.req.header('Origin');
-  const response = await chatWithOllama(message, []);
-  return ctx.json(response);
-});
+// app.post('/chat', async (ctx) => {
+//   const { message } = await ctx.req.json();
+//   // const origin = ctx.req.header('Origin');
+//   const response = await chatWithOllama(message, []);
+//   return ctx.json(response);
+// });
 
 
 

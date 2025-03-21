@@ -8,11 +8,20 @@ const ollama = new Ollama();
 
 const audioQueue = new Queue();
 
-export const chatWithOllama = async (message: string, messages: Message[]) => {
+export type SendMessageParams = { text: string, fileName?: string, finished?: boolean };
+
+type ChatWithOllamaParams = {
+  message: Message,
+  messages: Message[],
+  sendMessage: ({ text, finished, fileName }: SendMessageParams) => void
+}
+
+export const chatWithOllama = async (params: ChatWithOllamaParams) => {
+  const { message, messages, sendMessage } = params;
   const messagesForOllama = [
     { role: 'system', content: systemPrompt },
     ...messages,
-    { role: 'user', content: message }
+    message
   ];
 
   try {
@@ -31,29 +40,24 @@ export const chatWithOllama = async (message: string, messages: Message[]) => {
           let buffer = '';
           let answerSentence = '';
 
-          const onCorrectedPrompt = (correctedQuestion: string) => {
-            // console.log('Corrected question:', correctedQuestion);
-          };
+          const onAnswerSentence = async (text: string, section: string) => {
+            if (text.trim().length < 0) return;
+            const finished = text.includes('-----');
 
-          const onAnswerSentence = async (answerSentence: string, section: string) => {
-            if (section !== 'answer' || answerSentence.includes('-----')) return;
-            const event = 'answer_sentence';
-            // const data = { text: answerSentence };
-            // writeSSE({ stream: sseStream, event, id: 'lalala', data });
-            console.log('synth', answerSentence);
-            audioQueue.add(() => synth(answerSentence, 'af_heart'), async (fileName: string) => {
-              console.log('synth done', fileName, answerSentence);
-              // const data = { fileName, text: answerSentence };
-              // const payload = `event: ${event}\ndata: ${JSON.stringify(data)}\nid: ${messageId}\n\n`
-              // const id = Math.floor(Math.random() * 1000000).toString();
-              // await sseStream.write(payload);
-
-              // if (true) {
-              //   const event = 'bible_references';
-              //   const data = { references };
-              //   await writeSSE({ stream: sseStream, event, id: 'lalala', data });
-              // }
-            });
+            if (!finished) {
+              audioQueue.add(
+                () => synth(text, 'af_heart'),
+                async (fileName) => {
+                  console.log('synth finished', fileName, text);
+                  sendMessage({ text, fileName });
+                }
+              );
+            } else {
+              audioQueue.add(
+                () => Promise.resolve(),
+                async () => sendMessage({ text: '', finished })
+              );
+            }
           };
 
           for await (const chunk of response) {

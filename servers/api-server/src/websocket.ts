@@ -1,21 +1,31 @@
-export const onSocketMessage = async (ws: any, message: string) => {
-  const socket = ws as WebSocket;
-  console.log('WEBSOCKET: message', message);
-  const payload = {
-    type: 'agent-message',
-    message: {
-      content: loremipsum,
-      role: 'agent',
-    },
-  };
-  // for (let i = 0; i < 10; i++) {
-  //   await new Promise((resolve) => setTimeout(resolve, 1000));
-  //   socket.send(JSON.stringify(payload))
-  // }
+import type { SendMessageParams } from './ollama/chat-with-ollama';
+import { chatWithOllama } from './ollama/chat-with-ollama';
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  socket.send(JSON.stringify({ ...payload, finished: true }))
+export const onSocketMessage = async (ws: any, payload: any) => {
+  const socket = ws as WebSocket;
+  if (payload.type === 'user-message') {
+    // console.log(payload);
+    const { message, messages } = payload;
+    const sendMessage = setupSendMessage(socket);
+    const result = await chatWithOllama({ message, messages, sendMessage });
+  }
 }
+
+
+export const setupSendMessage = (ws: WebSocket) =>
+  ({ text, finished, fileName }: SendMessageParams) => {
+    const payload = {
+      type: 'agent-message',
+      finished: finished,
+      message: {
+        content: text,
+        role: 'agent',
+        fileName,
+      }
+    }
+    ws.send(JSON.stringify(payload));
+  };
+
 
 
 const loremipsum = `

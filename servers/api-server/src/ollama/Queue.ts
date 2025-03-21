@@ -17,7 +17,6 @@ export class Queue {
     while (this.queue.length > 0) {
       const { task, callback } = this.queue.shift()!;
       try {
-        console.log("Processing task...");
         const result = await task(); // Get the result of the task
         if (callback) callback(result); // Pass the result to the callback
         await new Promise((resolve) => setTimeout(resolve, 200)); // Wait for 1 second
