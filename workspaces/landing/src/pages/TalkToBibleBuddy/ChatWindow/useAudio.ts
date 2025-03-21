@@ -1,4 +1,4 @@
-import { file } from 'bun';
+import { useMemo } from 'react'; // Add useMemo for creating the AudioQueue instance
 import { AudioQueue } from './AudioQueue';
 
 type MessageType = {
@@ -9,14 +9,22 @@ type MessageType = {
 };
 
 export const useAudio = () => {
-  const playFiles = (message: MessageType) => {
-    const { fileNames } = message;
-    if (!fileNames || fileNames.length === 0) return;
+  // Instantiate a separate AudioQueue instance for the play button use case
+  const audioQueue = useMemo(() => {
+    const onFileStarted = (message: MessageType) => {
+      console.log('Started playing file for message:', message.content);
+    };
+    const onFileFinished = (message: MessageType) => {
+      console.log('Finished playing file for message:', message.content);
+    };
+    return new AudioQueue(onFileStarted, onFileFinished);
+  }, []);
 
-    const audioQueue = new AudioQueue();
-    audioQueue.queueFiles(fileNames);
-
+  const playMessage = (message: MessageType) => {
+    if (message.fileNames && message.fileNames.length > 0) {
+      audioQueue.queueMessage(message); // Queue the message with multiple files
+    }
   };
 
-  return { AudioQueue, playFiles };
-}
+  return { AudioQueue, playMessage };
+};

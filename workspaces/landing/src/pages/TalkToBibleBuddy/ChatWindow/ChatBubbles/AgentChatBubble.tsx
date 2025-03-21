@@ -1,9 +1,16 @@
 import { Play } from 'lucide-react'
+import { useAudio } from '../useAudio'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { cn } from '@/lib/cn'
 
 export const AgentChatBubble = ({ message }) => {
+  const { playMessage } = useAudio()
   const isMobile = useIsMobile()
+
+  const handlePlay = () => {
+    playMessage(message) // Call playMessage when the play button is clicked
+  }
+
   return (
     <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
       <div className="max-w-[80%] rounded-2xl px-4 py-2 grid bg-white rounded-tl-none">
@@ -14,7 +21,7 @@ export const AgentChatBubble = ({ message }) => {
           {/* Play button - only for non-user messages */}
           {message.role === 'agent' && (
             <button
-              // onClick={() => handlePlayMessage(index)}
+              onClick={handlePlay}
               className={cn(
                 `justify-self-end self-center p-2 rounded-full flex-shrink-0 transition-all shadow-sm`
                 // playingMessageIndex === index

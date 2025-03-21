@@ -12,6 +12,8 @@ export class AudioQueue {
   private isPlaying: boolean = false;
   private onFileStarted?: (message: MessageType) => void;
   private onFileFinished?: (message: MessageType) => void;
+  private currentMessageFiles: string[] = []; // Track files for the current message
+  private currentMessage?: MessageType; // Track the current message being played
 
   constructor(
     onFileStarted?: (message: MessageType) => void,
@@ -21,50 +23,57 @@ export class AudioQueue {
     this.onFileFinished = onFileFinished;
   }
 
-  private playNextAudio() {
-    if (this.audioQueue.length === 0) {
-      this.isPlaying = false;
-      return; // No onQueueFinished needed, handled in useChat useEffect
+  private playNextFile() {
+    // If there are no more files in the current message, move to the next message
+    if (this.currentMessageFiles.length === 0) {
+      if (this.audioQueue.length === 0) {
+        this.isPlaying = false;
+        this.currentMessage = undefined;
+        return; // Queue is done
+      }
+
+      // Get the next message and its files
+      this.currentMessage = this.audioQueue.shift()!;
+      this.currentMessageFiles = this.currentMessage.fileNames?.slice() || []; // Copy the fileNames array
+      this.playNextFile(); // Recursively call to start playing the first file
+      return;
     }
 
     this.isPlaying = true;
-    const message = this.audioQueue.shift()!; // Get the next message
-    const fileName = message.fileNames![0]; // Single file name as per your requirement
+    const fileName = this.currentMessageFiles.shift()!; // Get the next file from the current message
     const audio = new Audio(`${VITE_AUDIO_URL}/${fileName}`);
 
     // Trigger onFileStarted with the full message when playback starts
     audio.onplay = () => {
-      if (this.onFileStarted) {
-        this.onFileStarted(message);
+      if (this.onFileStarted && this.currentMessage) {
+        this.onFileStarted(this.currentMessage);
       }
     };
 
-    // Trigger onFileFinished with the message when playback ends, then play next
+    // Trigger onFileFinished with the message when playback ends, then play next file
     audio.onended = () => {
-      if (this.onFileFinished) {
-        this.onFileFinished(message);
+      if (this.onFileFinished && this.currentMessage) {
+        this.onFileFinished(this.currentMessage);
       }
-      this.playNextAudio();
+      this.playNextFile();
     };
 
-    // Handle errors by logging and moving to the next audio
+    // Handle errors by logging and moving to the next file
     audio.onerror = () => {
       console.error(`Failed to play audio: ${fileName}`);
-      this.playNextAudio();
+      this.playNextFile();
     };
 
     audio.play().catch((error) => {
       console.error(`Error playing audio: ${fileName}`, error);
-      this.playNextAudio();
+      this.playNextFile();
     });
   }
 
   public queueMessage(message: MessageType) {
     this.audioQueue.push(message);
     if (!this.isPlaying) {
-      this.playNextAudio();
+      this.playNextFile();
     }
   }
-
-  // Removing queueFiles since you’re only enqueuing one file per message now
 }
