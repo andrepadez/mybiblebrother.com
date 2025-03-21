@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useWebsocket } from '../useWebsocket';
-const { VITE_API_URL, VITE_AUDIO_URL } = import.meta.env;
-
+import { AudioQueue } from './AudioQueue';
 
 type MessageType = {
   role: 'user' | 'agent';
@@ -10,33 +9,43 @@ type MessageType = {
   fileName?: string;
 };
 
-console.log(`${VITE_AUDIO_URL}`)
-
 export const useChat = () => {
   const { online, socketSend, onmessage } = useWebsocket();
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [isChatting, setIsChatting] = useState(false);
 
-  const autoplayAudio = (fileName: string) => {
-    if (!fileName) return;
-    const audio = new Audio(`${VITE_AUDIO_URL}/${fileName}`);
-    audio.play();
-  };
+  // Instantiate the AudioQueue
+  const audioQueue = useMemo(
+    () =>
+      new AudioQueue(
+        (message: MessageType) => {
+          setMessages((prev) => [...prev, message]);
+        },
+        () => {
+          // Set isChatting to false when the queue is finished
+          setTimeout(() => setIsChatting(false), 500);
+        }
+      ),
+    []
+  );
 
   useEffect(() => {
     onmessage((event) => {
       const data = JSON.parse(event.data);
       if (data.type === 'agent-message') {
-        if (data.finished) return setTimeout(() => setIsChatting(false), 500);
+        if (data.finished) {
+          // No need to setIsChatting(false) here; AudioQueue handles it via onQueueFinished
+          return;
+        }
         const { message } = data;
-        if (message.content.trim().length) {
+        if (message.content.trim().length && message.fileName) {
           message.timestamp = new Date().toISOString();
-          setMessages(prev => [...prev, message]);
-          autoplayAudio(message.fileName);
+          setIsChatting(true); // Set to true when a new message arrives
+          audioQueue.queueAudio(message, message.fileName);
         }
       }
     });
-  }, [])
+  }, [onmessage, audioQueue]);
 
 
   const sendMessage = async (text: string) => {
