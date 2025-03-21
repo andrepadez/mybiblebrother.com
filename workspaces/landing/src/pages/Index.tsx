@@ -18,7 +18,7 @@ const Index = () => {
     }
   }
 
-  const scrollToBibleVerse = (ev) => {
+  const scrollToBibleVerse = ev => {
     ev.preventDefault()
     const bibleVerseSection = document.getElementById('bible-verse-of-the-day')
     if (bibleVerseSection) {
@@ -53,30 +53,30 @@ const Index = () => {
       {/* Hero Section - Full height with sky background */}
       <section className="min-h-[100vh] w-full">
         <Hero
-          title="My Bible Brother"
+          title="My Bible Pal"
           subtitle="Experience the Word through guided meditation, daily scripture, and personal reflection. Your digital companion for a deeper spiritual journey."
         />
       </section>
 
       {/* Waitlist Form Section */}
-      <WaitlistSection 
-        scrollToTop={scrollToTop} 
-        scrollToFeatures={scrollToFeatures} 
-        scrollToBibleVerse={scrollToBibleVerse} 
+      <WaitlistSection
+        scrollToTop={scrollToTop}
+        scrollToFeatures={scrollToFeatures}
+        scrollToBibleVerse={scrollToBibleVerse}
       />
 
       {/* Bible Verse Section */}
-      <BibleVerseSection 
-        scrollToTop={scrollToTop} 
-        scrollToFeatures={scrollToFeatures} 
-        scrollToWaitlist={scrollToWaitlist} 
+      <BibleVerseSection
+        scrollToTop={scrollToTop}
+        scrollToFeatures={scrollToFeatures}
+        scrollToWaitlist={scrollToWaitlist}
       />
 
       {/* Features Section */}
-      <FeaturesSection 
-        scrollToWaitlist={scrollToWaitlist} 
-        scrollToBibleVerse={scrollToBibleVerse} 
-        scrollToTop={scrollToTop} 
+      <FeaturesSection
+        scrollToWaitlist={scrollToWaitlist}
+        scrollToBibleVerse={scrollToBibleVerse}
+        scrollToTop={scrollToTop}
       />
 
       {/* Footer */}

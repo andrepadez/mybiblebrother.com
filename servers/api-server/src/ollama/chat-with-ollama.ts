@@ -4,8 +4,9 @@ import { systemPrompt } from './system-prompt';
 import { synth } from './synthesize';
 import { Queue } from './Queue';
 import { stripMarkdown } from './strip-markdown';
+const { OLLAMA_URL } = process.env
 
-const ollama = new Ollama();
+const ollama = new Ollama({ host: OLLAMA_URL });
 
 const audioQueue = new Queue();
 
@@ -48,9 +49,7 @@ export const chatWithOllama = async (params: ChatWithOllamaParams) => {
           const onAnswerSentence = async (text: string, section: string) => {
             if (text.trim().length < 0) return;
             const finished = text.includes('-----');
-            if (finished) {
-              reportLineCount(lineCount);
-            }
+            reportLineCount(lineCount);
 
             lineCount++;
 
@@ -58,7 +57,7 @@ export const chatWithOllama = async (params: ChatWithOllamaParams) => {
               const strippedText = stripMarkdown(text);
               console.log('adding to queue', lineCount, strippedText);
               audioQueue.add(
-                () => synth(strippedText, 'af_heart'),
+                () => synth(strippedText, 'af_heart', 0.9),
                 async (fileName) => {
                   console.log('synth finished', fileName,);
                   sendMessage({ text: strippedText, fileName });

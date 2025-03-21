@@ -31,7 +31,7 @@ const App = () => (
             <Route index element={<Index />} />
             <Route path="about" element={<About />} />
             <Route path="scripture" element={<Scripture />} />
-            <Route path="talk-to-bible-buddy" element={<TalkToBibleBuddy />} />
+            <Route path="chat" element={<TalkToBibleBuddy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<Navigate to="/not-found" replace />} />
           </Route>

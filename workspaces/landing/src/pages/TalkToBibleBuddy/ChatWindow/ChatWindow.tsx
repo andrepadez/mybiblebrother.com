@@ -33,7 +33,7 @@ export const ChatWindow = () => {
       {/* Header */}
       <div className="bg-white p-4 border-b relative flex items-center justify-between">
         <div></div>
-        <h2 className="text-lg font-semibold text-center">Bible Pal</h2>
+        <h2 className="text-lg font-semibold text-center">Sarah</h2>
         <div
           className={`size-4 ${online ? 'bg-green-500' : 'bg-red-500'} top-0 right-0 rounded-full`}
         ></div>

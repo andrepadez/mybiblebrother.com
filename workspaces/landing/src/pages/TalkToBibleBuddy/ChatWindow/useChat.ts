@@ -11,11 +11,12 @@ type MessageType = {
 
 export const useChat = () => {
   const { online, socketSend, onmessage } = useWebsocket();
-  const [messages, setMessages] = useState<MessageType[]>([]);
+  const [messages, setMessages] = useState<MessageType[]>([firstAgentMessage]);
   const [isChatting, setIsChatting] = useState(false);
   const [lineCount, setLineCount] = useState<number | null>(null);
   console.log(messages)
   // Instantiate the AudioQueue
+
   const audioQueue = useMemo(
     () => {
       const onFileStarted = (message: MessageType) => {
@@ -118,3 +119,12 @@ export const useChat = () => {
 
 export type useChatType = ReturnType<typeof useChat>
 
+const firstAgentMessage: MessageType = {
+  role: 'agent',
+  content: `
+Good Morning. 
+How can I be of service?
+`,
+  timestamp: new Date().toISOString(),
+  fileNames: ['tts_85320e37-46e3-4b37-a87b-23f5bfb7ef11.wav']
+};
