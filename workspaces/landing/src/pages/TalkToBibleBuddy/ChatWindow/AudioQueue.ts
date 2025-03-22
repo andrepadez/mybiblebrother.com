@@ -52,7 +52,9 @@ export class AudioQueue {
 
     // Trigger onFileFinished with the message when playback ends, then play next file
     audio.onended = () => {
+      console.log('finished playing:', this.currentMessage.content);
       if (this.onFileFinished && this.currentMessage) {
+        console.log('this.onFileFinished');
         this.onFileFinished(this.currentMessage);
       }
       this.playNextFile();

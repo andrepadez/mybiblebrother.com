@@ -14,17 +14,19 @@ export const useChat = () => {
   const [messages, setMessages] = useState<MessageType[]>([firstAgentMessage]);
   const [isChatting, setIsChatting] = useState(false);
   const [lineCount, setLineCount] = useState<number | null>(null);
-  console.log(messages)
   // Instantiate the AudioQueue
 
   const audioQueue = useMemo(
     () => {
       const onFileStarted = (message: MessageType) => {
-        console.log('started playing:', message.content, message.fileNames[0]);
         setMessages((prev) => ([...prev, message]));
       }
       const onFileFinished = () => {
-        setLineCount((prev) => prev - 1);
+        console.log('decrementing line count', lineCount)
+        setLineCount((prev) => {
+          console.log('file finished, decrementing from:', prev)
+          return prev - 1
+        });
       }
       return new AudioQueue(onFileStarted, onFileFinished);
     },
@@ -32,9 +34,7 @@ export const useChat = () => {
   );
 
   useEffect(() => {
-    if (isChatting && lineCount === 0) {
-      setIsChatting(false);
-      setLineCount(null);
+    if (isChatting && lineCount < 1) {
       setMessages((prev) => {
         // If there are no messages or no agent messages, return unchanged
         if (!prev || prev.length === 0) return prev;
@@ -50,7 +50,7 @@ export const useChat = () => {
         }
 
         // If there are no agent messages or only one, no need to concatenate
-        if (lastAgentMessages.length <= 1) return prev;
+        if (lastAgentMessages.length < 1) return prev;
 
         // Concatenate the latest agent messages
         const concatenatedContent = lastAgentMessages
@@ -70,10 +70,13 @@ export const useChat = () => {
 
         return newMessages;
       });
+      setTimeout(() => {
+        setIsChatting(false);
+        setLineCount(null);
+      }, 100)
     }
   }, [lineCount, isChatting]);
 
-  console.log('lineCount:', lineCount)
 
   useEffect(() => {
     onmessage((event) => {
@@ -83,7 +86,6 @@ export const useChat = () => {
       }
       if (data.type === 'agent-message') {
         const { message } = data;
-        console.log('agent-message:', message)
         if (message.content.trim().length && message.fileNames?.length) {
           message.timestamp = new Date().toISOString();
           setIsChatting(true); // Set to true when a new message arrives
@@ -100,6 +102,9 @@ export const useChat = () => {
     const message = { role: 'user' as const, content: text, timestamp } as MessageType;
     const newMessages: MessageType[] = [...messages, message];
 
+    setMessages(_ => newMessages);
+    setIsChatting(true);
+
     // Create versions without timestamp for server
     const messageForServer = { role: 'user' as const, content: text };
     const messagesForServer = messages.map(({ role, content }) => ({ role, content }));
@@ -109,9 +114,6 @@ export const useChat = () => {
       message: messageForServer,
       messages: messagesForServer,
     });
-
-    setMessages(_ => newMessages);
-    setIsChatting(true);
   };
 
   return { sendMessage, messages, online, isChatting };
