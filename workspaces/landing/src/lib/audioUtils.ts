@@ -1,24 +1,26 @@
 
 // List of available scripture readings and meditations
+const { VITE_AUDIO_URL } = import.meta.env;
+
 export const audioTracks = [
   {
     title: 'Genesis 1:1',
-    src: '/audios/00000001-Genesis-1_1.mp3',
+    src: `${VITE_AUDIO_URL}/audio/00000001-Genesis-1_1.mp3`,
     id: 1,
   },
   {
     title: 'Genesis 1:2',
-    src: '/audios/00000002-Genesis-1_2.mp3',
+    src: `${VITE_AUDIO_URL}/audio/00000001-Genesis-1_2.mp3`,
     id: 2,
   },
   {
     title: 'Genesis 1:3',
-    src: '/audios/00000003-Genesis-1_3.mp3',
+    src: `${VITE_AUDIO_URL}/audio/00000001-Genesis-1_3.mp3`,
     id: 3,
   },
   {
     title: 'Genesis 1:4',
-    src: '/audios/00000004-Genesis-1_4.mp3',
+    src: `${VITE_AUDIO_URL}/audio/00000001-Genesis-1_4.mp3`,
     id: 4,
   },
 ]
@@ -45,3 +47,6 @@ export const formatTime = (seconds: number): string => {
 
   return `${formattedMinutes}:${formattedSeconds}`;
 };
+
+
+console.log('audioTracks', audioTracks);

@@ -9,6 +9,9 @@
     "dev:api": "cd servers/api-server && bun run dev",
     "start:api": "cd servers/api-server && bun run start",
     "build:api": "cd servers/api-server && bun run build",
+    "dev:audio": "cd servers/audio-server && bun run dev",
+    "start:audio": "cd servers/audio-server && bun run start",
+    "build:audio": "cd servers/audio-server && bun run build",
     "dev:landing": "cd workspaces/landing && bun run dev",
     "start:landing": "cd workspaces/landing && bun run preview",
     "build:landing": "cd workspaces/landing && bun run build"

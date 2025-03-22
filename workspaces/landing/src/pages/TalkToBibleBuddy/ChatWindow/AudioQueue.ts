@@ -41,7 +41,7 @@ export class AudioQueue {
 
     this.isPlaying = true;
     const fileName = this.currentMessageFiles.shift()!; // Get the next file from the current message
-    const audio = new Audio(`${VITE_AUDIO_URL}/${fileName}`);
+    const audio = new Audio(`${VITE_AUDIO_URL}/audio/${fileName}`);
 
     // Trigger onFileStarted with the full message when playback starts
     audio.onplay = () => {
