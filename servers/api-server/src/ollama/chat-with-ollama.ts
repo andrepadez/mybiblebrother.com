@@ -57,7 +57,7 @@ export const chatWithOllama = async (params: ChatWithOllamaParams) => {
               const strippedText = stripMarkdown(text);
               console.log('adding to queue', lineCount, strippedText);
               audioQueue.add(
-                () => synth(strippedText, 'af_heart', 0.9),
+                () => synth(strippedText, 'af_bella', 0.9),
                 async (fileName) => {
                   console.log('synth finished', fileName,);
                   sendMessage({ text: strippedText, fileName });
