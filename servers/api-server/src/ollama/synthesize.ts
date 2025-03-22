@@ -1,9 +1,9 @@
-const { VITE_AUDIO_URL } = import.meta.env;
+const { MLX_AUDIO_URL } = import.meta.env;
 
 
 export const synth = async (text: string, voice: string, speed: number) => {
   try {
-    const result = await fetch(`${VITE_AUDIO_URL}/tts`, {
+    const result = await fetch(`${MLX_AUDIO_URL}/tts`, {
       "headers": {
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.8",
