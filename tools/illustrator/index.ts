@@ -16,6 +16,8 @@ const maxRetries: number = 3; // Maximum retries for a fetch request
 const retryDelay: number = 5000; // Delay between retries (5 seconds)
 const batchDelay: number = 5000; // Delay between batches (5 seconds)
 
+const skipChapters = 10;
+
 // Define the type for the progress response from /sdapi/v1/progress
 interface ProgressResponse {
   progress: number; // Progress as a float (0 to 1)
@@ -121,7 +123,12 @@ async function fetchWithRetries(url: string, options: RequestInit, retries: numb
 // Function to generate images for a given chapter
 async function generateImagesForChapter(promptData: PromptData): Promise<void> {
   const { chapter, positive_prompt, negative_prompt } = promptData;
-
+  console.log(chapter.replace('Genesis ', ''));
+  const theChapter = parseInt(chapter.replace('Genesis ', ''));
+  if (theChapter <= skipChapters) {
+    console.log(`Skipping ${chapter}`);
+    return;
+  }
   // Prepare the base payload for the Stable Diffusion API
   const basePayload: StableDiffusionPayload = {
     prompt: positive_prompt,
