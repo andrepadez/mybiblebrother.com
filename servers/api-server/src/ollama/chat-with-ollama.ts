@@ -35,7 +35,8 @@ export const chatWithOllama = async (params: ChatWithOllamaParams) => {
       async start(controller) {
         try {
           const response = await ollama.chat({
-            model: 'ALIENTELLIGENCE/holybible',
+            // model: 'ALIENTELLIGENCE/holybible',
+            model: 'gemma3:1b',
             messages: messagesForOllama,
             stream: true,
           });
@@ -57,7 +58,7 @@ export const chatWithOllama = async (params: ChatWithOllamaParams) => {
               const strippedText = stripMarkdown(text);
               console.log('adding to queue', lineCount, strippedText);
               audioQueue.add(
-                () => synth(strippedText, 'af_bella', 0.9),
+                () => synth(strippedText, 'af_bella', 1),
                 async (fileName) => {
                   console.log('synth finished', fileName,);
                   sendMessage({ text: strippedText, fileName });

@@ -22,16 +22,19 @@ export const useChat = () => {
         setMessages((prev) => ([...prev, message]));
       }
       const onFileFinished = () => {
-        console.log('decrementing line count', lineCount)
-        setLineCount((prev) => {
-          console.log('file finished, decrementing from:', prev)
-          return prev - 1
-        });
+        setTimeout(() => {
+          setLineCount((prev) => {
+            console.log('file finished, decrementing from:', prev)
+            return prev - 1
+          });
+        }, 100)
       }
       return new AudioQueue(onFileStarted, onFileFinished);
     },
     []
   );
+
+  console.log('lineCount', lineCount);
 
   useEffect(() => {
     if (isChatting && lineCount < 1) {
@@ -55,7 +58,7 @@ export const useChat = () => {
         // Concatenate the latest agent messages
         const concatenatedContent = lastAgentMessages
           .map((msg) => msg.content)
-          .join('\n');
+          .join('.\n');
         const latestTimestamp = lastAgentMessages[lastAgentMessages.length - 1].timestamp;
         const fileNames = lastAgentMessages.flatMap((msg) => msg.fileNames || []);
 
