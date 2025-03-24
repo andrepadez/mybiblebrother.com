@@ -2,250 +2,301 @@
   {
     "chapter": "Genesis 1",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the creation of the world, swirling cosmic void with shimmering stars, radiant divine light piercing through darkness, vibrant earth forming with lush green landscapes and sparkling oceans, the sky separating from the waters, celestial bodies glowing in the heavens, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God creates the heavens and the earth in six days, bringing order from chaos with light, sky, land, seas, plants, stars, animals, and a sacred rhythm, declaring it all good."
   },
   {
     "chapter": "Genesis 2",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the Garden of Eden in its pristine beauty, lush green pastures with vibrant flowers, sparkling rivers flowing from a single source, the Tree of Life and the Tree of Knowledge glowing softly at the center, radiant divine light bathing the scene, a serene and sacred stillness, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God forms the first man from dust, places him in the lush Garden of Eden with the Tree of Life and Tree of Knowledge, and creates a woman from his rib, establishing a perfect harmony."
   },
   {
     "chapter": "Genesis 3",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the Garden of Eden during the Fall, the Tree of Knowledge glowing ominously with forbidden fruit, a coiled serpent with piercing eyes wrapped around the tree, lush green pastures beginning to wilt, radiant divine light fading into stormy shadows, a sense of foreboding and loss, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet foreboding atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "The serpent tempts Eve to eat from the Tree of Knowledge, leading Adam to follow; they disobey God, gain knowledge of good and evil, and are expelled from Eden under a curse."
   },
   {
     "chapter": "Genesis 4",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a barren field under a stormy sky, a blood-stained altar with a rejected offering of crops, a distant burning sacrifice of a lamb glowing with divine favor, the ground cracked and cursed, a sense of jealousy and violence lingering in the air, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet tragic atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Cain, jealous of God’s favor toward Abel’s offering, murders his brother; God curses Cain to wander, yet marks him for protection, as sin’s consequences deepen."
   },
   {
     "chapter": "Genesis 5",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient, weathered stone tablet glowing softly in a desert landscape, etched with the names of generations from Adam to Noah, surrounded by shifting sands and a golden sunset, a sense of timeless legacy and divine continuity, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "The lineage from Adam to Noah unfolds across centuries, marked by long lives and the birth of sons, culminating in Enoch’s mysterious ascent to God."
   },
   {
     "chapter": "Genesis 6",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a corrupted earth under a darkened sky, barren lands with twisted, dying trees, a massive wooden ark under construction amidst the desolation, divine light faintly illuminating the ark, a sense of impending judgment and hope, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet ominous atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Humanity’s wickedness grieves God, who plans a flood to destroy the earth, but spares righteous Noah, instructing him to build an ark for salvation."
   },
   {
     "chapter": "Genesis 7",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the great flood beginning, torrential rain pouring from a blackened sky, massive waves rising over the earth, the ark floating amidst the chaos, pairs of animals visible on the ark’s deck, lightning illuminating the scene, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet chaotic atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God sends a flood to wipe out all life, but Noah, his family, and representatives of every animal survive aboard the ark as waters rise for forty days."
   },
   {
     "chapter": "Genesis 8",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the floodwaters receding, the ark resting on the mountains of Ararat, a dove returning with an olive branch in its beak, the first rays of sunlight breaking through parting clouds, a rainbow faintly glowing in the sky, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred and hopeful atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "The flood recedes, the ark settles on Ararat, and a dove brings an olive branch; Noah’s family emerges as God’s promise dawns with a rainbow."
   },
   {
     "chapter": "Genesis 9",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a renewed earth after the flood, vibrant green fields under a clear blue sky, a radiant rainbow arching across the heavens, the ark in the distance on a mountain, a sense of divine promise and new beginnings, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred and peaceful atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God blesses Noah’s family with a covenant, symbolized by a rainbow, promising never again to destroy the earth with a flood, despite human frailty."
   },
   {
     "chapter": "Genesis 10",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient map carved into a stone slab, glowing softly in a desert setting, the map tracing the spread of nations from Noah’s sons, surrounded by diverse landscapes—mountains, rivers, and seas—under a golden sunrise, a sense of global expansion and legacy, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Noah’s sons—Shem, Ham, and Japheth—father nations that spread across the earth, forming a diverse tapestry of peoples and lands."
   },
   {
     "chapter": "Genesis 11",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the Tower of Babel under construction, a massive ziggurat reaching into the sky, surrounded by a bustling plain of Shinar, dark clouds gathering above as divine judgment looms, the tower’s stones glowing faintly with ambition, a sense of pride and impending chaos, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet ominous atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Humanity unites to build the Tower of Babel in pride, but God confuses their language and scatters them across the earth, halting their ambition."
   },
   {
     "chapter": "Genesis 12",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient desert landscape at sunrise, a glowing divine light shining over the horizon, a path leading from the city of Ur toward a distant promised land, a sense of divine calling and journey, the sky filled with stars symbolizing God’s promise, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred and hopeful atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God calls Abram to leave Ur for a promised land, vowing to make him a great nation; Abram journeys in faith, blessed despite trials in Egypt."
   },
   {
     "chapter": "Genesis 13",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a vast fertile plain under a golden sunrise, the land of Canaan stretching to the horizon, lush green valleys contrasting with distant arid hills, a sense of divine promise and separation, the Jordan River shimmering in the distance, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred and hopeful atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Abram and Lot separate due to strife; Abram generously offers Lot first choice, settling in Canaan as God reaffirms the promise of land and descendants."
   },
   {
-    "chapter": "Genesis -1.3), photorealistic cinematic scene of a battlefield in an ancient desert, scattered weapons and shields under a fiery sky, a coalition of four kings against five, the ground stained with the aftermath of war, a sense of chaos and divine intervention, distant mountains under a stormy sky, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet chaotic atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "chapter": "Genesis 14",
+    "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a battlefield in an ancient desert, scattered weapons and shields under a fiery sky, a coalition of four kings against five, the ground stained with the aftermath of war, a sense of chaos and divine intervention, distant mountains under a stormy sky, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet chaotic atmosphere",
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Four kings battle five and capture Lot; Abram rescues him with a small force, blessed by Melchizedek, showing God’s favor in chaos."
   },
   {
     "chapter": "Genesis 15",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a starry night sky over a desert, a glowing altar with a burning torch passing between animal sacrifices, a divine covenant sealed in the darkness, the stars symbolizing countless descendants, a sense of sacred promise, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God reaffirms His promise to childless Abram with a vision of countless descendants, sealing a covenant through a mysterious sacrifice under the stars."
   },
   {
     "chapter": "Genesis 16",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a desolate wilderness under a scorching sun, a well of water shimmering in the desert, a sense of divine encounter and promise, the horizon glowing with hope, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred and hopeful atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Sarai gives Hagar to Abram to bear a child; Hagar flees mistreatment but is met by God, who promises her son Ishmael a great destiny."
   },
   {
     "chapter": "Genesis 17",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient desert at twilight, a glowing covenant symbol carved into stone, the sky filled with stars representing a divine promise of descendants, a sense of sacred renewal, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God renames Abram to Abraham, establishes circumcision as a covenant sign, and promises Sarai, now Sarah, a son despite their old age."
   },
   {
     "chapter": "Genesis 18",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient oak grove at midday, a glowing divine presence under the trees, a table set with bread and meat, the horizon showing the cities of Sodom and Gomorrah under a stormy sky, a sense of divine visitation and judgment, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet ominous atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Three visitors, revealing God’s presence, announce Isaac’s birth to Abraham; God discloses Sodom’s doom, prompting Abraham to intercede."
   },
   {
     "chapter": "Genesis 19",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of Sodom and Gomorrah burning under a fiery sky, brimstone and fire raining down, a pillar of salt standing in the desert, the cities engulfed in smoke and flames, a sense of divine judgment, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet destructive atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God destroys Sodom and Gomorrah with fire for their wickedness, sparing Lot; his wife turns to salt for looking back, defying the escape."
   },
   {
     "chapter": "Genesis 20",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient Philistine city under a golden sunset, a royal palace glowing with opulence, a sense of divine protection and confrontation, the desert stretching into the distance, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Abraham deceives Abimelech about Sarah, claiming she’s his sister; God intervenes, protecting Sarah and blessing Abraham despite the ruse."
   },
   {
     "chapter": "Genesis 21",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a desert wilderness at dawn, a well of water shimmering with divine provision, a sense of separation and promise, the horizon glowing with hope, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred and hopeful atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Isaac is born to Sarah as God promised; Hagar and Ishmael are sent away, but God provides for them in the wilderness with a well."
   },
   {
     "chapter": "Genesis 22",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of Mount Moriah under a stormy sky, an altar with a ram caught in a thicket, a glowing divine light breaking through the clouds, a sense of sacrifice and provision, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God tests Abraham by commanding Isaac’s sacrifice; Abraham obeys, but God provides a ram instead, reaffirming His covenant blessings."
   },
   {
     "chapter": "Genesis 23",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient cave tomb in a rocky field, the cave of Machpelah under a golden sunset, a sense of mourning and legacy, the surrounding land glowing with promise, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Sarah dies, and Abraham purchases the cave of Machpelah from the Hittites as her burial place, securing a foothold in the promised land."
   },
   {
     "chapter": "Genesis 24",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient well in a desert at sunset, a caravan of camels laden with gifts, a sense of divine guidance and provision, the horizon glowing with hope, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Abraham sends his servant to find a wife for Isaac; guided by God, the servant meets Rebekah at a well, and she agrees to marry Isaac."
   },
   {
     "chapter": "Genesis 25",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient burial cave under a twilight sky, a field of grain glowing in the distance, a sense of legacy and division, the horizon showing two paths diverging, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Abraham dies and is buried with Sarah; Rebekah bears twins, Esau and Jacob, who struggle even in the womb, foreshadowing their rivalry."
   },
   {
     "chapter": "Genesis 26",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a fertile valley in Philistine land, a well of water shimmering under a golden sun, a sense of divine blessing amidst conflict, the fields glowing with abundance, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Isaac prospers in Philistine land despite conflict over wells; God renews the covenant, blessing him as Abraham’s heir amid famine."
   },
   {
     "chapter": "Genesis 27",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient tent in a field, a bowl of stew and a goatskin on a table, a sense of deception and blessing, the horizon glowing with tension, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet tense atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob, with Rebekah’s help, deceives Isaac to steal Esau’s blessing; Isaac blesses Jacob with dominion, leaving Esau enraged."
   },
   {
     "chapter": "Genesis 28",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a desert at night, a stone pillow under a starry sky, a glowing ladder reaching into the heavens with angels ascending and descending, a sense of divine promise and vision, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Fleeing Esau, Jacob dreams of a ladder to heaven; God promises him land and descendants, renaming the place Bethel."
   },
   {
     "chapter": "Genesis 29",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a well in a field at sunrise, a flock of sheep gathered around, a sense of love and deception, the horizon glowing with new beginnings, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob meets Rachel at a well and loves her; Laban deceives him into marrying Leah first, then Rachel, after years of labor."
   },
   {
     "chapter": "Genesis 30",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a fertile field under a golden sky, mandrakes and livestock scattered across the land, a sense of rivalry and divine blessing, the horizon glowing with abundance, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Leah and Rachel compete through childbirth, aided by servants; Jacob prospers with Laban’s flocks through divine favor."
   },
   {
     "chapter": "Genesis 31",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a caravan journeying through a desert at dawn, a pile of stones marking a covenant, a sense of departure and divine protection, the horizon glowing with promise, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob flees Laban with his family and wealth; after a pursuit, they make a covenant of peace, marked by a stone heap."
   },
   {
     "chapter": "Genesis 32",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the Jabbok River at night, a glowing divine presence by the water, a sense of struggle and blessing, the horizon glowing with transformation, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob wrestles a mysterious figure by the Jabbok, earning the name Israel; blessed but limping, he prepares to face Esau."
   },
   {
     "chapter": "Genesis 33",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a field at sunrise, two caravans meeting under a golden sky, a sense of reconciliation and peace, the horizon glowing with unity, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob and Esau reunite and reconcile warmly; Jacob settles in Canaan, relieved of past fears, under God’s protection."
   },
   {
     "chapter": "Genesis 34",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient city in ruins, blood-stained streets under a fiery sky, a sense of vengeance and desecration, the horizon glowing with conflict, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet tragic atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Dinah is violated by a Shechemite; Simeon and Levi avenge her by slaughtering the city, bringing tension to Jacob’s family."
   },
   {
     "chapter": "Genesis 35",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of Bethel under a twilight sky, a stone pillar anointed with oil, a sense of divine renewal and mourning, the horizon glowing with promise, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God renews Jacob’s covenant at Bethel; Rachel dies giving birth to Benjamin, and Isaac dies, leaving a mixed legacy of joy and loss."
   },
   {
     "chapter": "Genesis 36",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the land of Edom under a fiery sunset, rugged mountains and valleys stretching into the distance, a sense of legacy and separation, the horizon glowing with history, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Esau’s descendants multiply into the Edomites, settling in Seir, distinct from Jacob’s line, fulfilling their own legacy."
   },
   {
     "chapter": "Genesis 37",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a dry cistern in a desert field, a colorful coat torn and stained with blood, a caravan of Ishmaelites in the distance, a sense of betrayal and divine providence, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred yet tragic atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Joseph’s dreams provoke his brothers’ jealousy; they sell him to traders, faking his death with a bloodied coat, yet God’s plan begins."
   },
   {
     "chapter": "Genesis 38",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient road at dusk, a scarlet cord hanging from a window, a sense of deception and redemption, the horizon glowing with justice, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Judah’s sons die after wronging Tamar; she deceives Judah to bear twins, securing her place in God’s redemptive line."
   },
   {
     "chapter": "Genesis 39",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an Egyptian prison under a dim torchlight, a cloak left behind in a doorway, a sense of false accusation and divine favor, the walls glowing with ancient hieroglyphs, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Joseph prospers in Potiphar’s house but is falsely accused by Potiphar’s wife and imprisoned; God’s favor remains with him."
   },
   {
     "chapter": "Genesis 40",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an Egyptian dungeon at night, a vine with three branches and a basket of bread on a stone table, a sense of dreams and divine interpretation, the walls glowing with ancient carvings, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Joseph interprets the dreams of Pharaoh’s cupbearer and baker in prison; one is restored, the other executed, as foretold."
   },
   {
     "chapter": "Genesis 41",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the Nile River under a golden sky, seven fat cows and seven lean cows emerging from the water, a granary filled with grain, a sense of divine revelation and preparation, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Joseph interprets Pharaoh’s dreams of famine, rises to power, and prepares Egypt with stored grain, fulfilling God’s plan."
   },
   {
     "chapter": "Genesis 42",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an Egyptian granary under a scorching sun, sacks of grain piled high, a sense of famine and divine providence, the horizon glowing with tension, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Famine drives Jacob’s sons to Egypt for grain; Joseph, unrecognized, tests them, holding Simeon until they return with Benjamin."
   },
   {
     "chapter": "Genesis 43",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an Egyptian feast hall at dusk, a silver cup on a table, a sense of fear and reconciliation, the walls glowing with ancient art, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "The brothers return with Benjamin; Joseph hosts a feast, testing their loyalty further, as reconciliation nears."
   },
   {
     "chapter": "Genesis 44",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an Egyptian road at sunrise, a silver cup hidden in a sack of grain, a sense of testing and sacrifice, the horizon glowing with tension, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Joseph plants a cup in Benjamin’s sack, accusing them of theft; Judah offers himself instead, showing changed hearts."
   },
   {
     "chapter": "Genesis 45",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an Egyptian palace under a golden sky, a royal seal on a table, a sense of revelation and forgiveness, the horizon glowing with reunion, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Joseph reveals his identity to his brothers, forgives them, and sends for Jacob, reuniting the family under God’s providence."
   },
   {
     "chapter": "Genesis 46",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of a caravan journeying through a desert at sunset, a sense of divine guidance and reunion, the land of Goshen glowing in the distance, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "God reassures Jacob to go to Egypt; he reunites with Joseph in Goshen, settling there with his entire household."
   },
   {
     "chapter": "Genesis 47",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of the land of Goshen under a golden sky, fertile fields and livestock thriving, a sense of divine provision amidst famine, the Nile River shimmering in the distance, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob’s family thrives in Goshen; Joseph manages Egypt’s famine, gaining land for Pharaoh while sustaining his people."
   },
   {
     "chapter": "Genesis 48",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient tent in Goshen at twilight, a staff crossed over a bed, a sense of blessing and adoption, the horizon glowing with legacy, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob, near death, blesses Joseph’s sons, adopting them as his own and giving the younger, Ephraim, precedence over Manasseh."
   },
   {
     "chapter": "Genesis 49",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient gathering place at sunset, a lion’s emblem carved into stone, a sense of prophetic blessing and legacy, the horizon glowing with destiny, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Jacob prophetically blesses his twelve sons, foretelling their tribes’ futures, then dies, entrusting his legacy to them."
   },
   {
     "chapter": "Genesis 50",
     "positive_prompt": "(Masterpiece, Best Quality, Ultra Highres:1.3), photorealistic cinematic scene of an ancient tomb in the cave of Machpelah under a twilight sky, a sarcophagus glowing with honor, a sense of mourning and hope, the horizon glowing with promise, crisp details, hyper-realistic textures, 4k resolution, dramatic lighting, atmospheric depth, cinematic composition, sacred atmosphere",
-    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters"
+    "negative_prompt": "low quality, blurry, low resolution, grainy, overexposed, underexposed, unrealistic proportions, image artifacts, watermark, text overlay, oversaturated, distorted, noisy, compression artifacts, amateurish, fantasy style, comic book style, humans, human figures, humanoid shapes, people, characters",
+    "summary": "Joseph buries Jacob in Machpelah, reassures his fearful brothers of forgiveness, and dies, trusting in God’s promise to return to Canaan."
   }
 ]
